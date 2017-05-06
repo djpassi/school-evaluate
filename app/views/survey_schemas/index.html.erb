@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Survey Schemas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @survey_schemas.each do |survey_schema| %>
+      <tr>
+        <td><%= survey_schema.title %></td>
+        <td><%= link_to 'Show', survey_schema %></td>
+        <td><%= link_to 'Edit', edit_survey_schema_path(survey_schema) %></td>
+        <td><%= link_to 'Destroy', survey_schema, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Survey Schema', new_survey_schema_path %>
