@@ -1,0 +1,43 @@
+<%= form_for(survey_schema) do |f| %>
+  <% if survey_schema.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(survey_schema.errors.count, "error") %> prohibited this survey_schema from being saved:</h2>
+
+      <ul>
+      <% survey_schema.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, required: true %>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Genre</th>
+        <th colspan="3"></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @questions.each do |x| %>
+        <tr>
+          <td> <%= x.name %> </td>
+          <td> <%= x.genre %> </td>
+          <td> <p> Agregar pregunta </p> </td>
+          <td> <%= check_box_tag "questions[]", x.id %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
