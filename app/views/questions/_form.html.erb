@@ -16,10 +16,17 @@
     <%= f.text_field :name %>
   </div>
 
+
   <div class="field">
-    <%= f.label :type %>
-    <%= f.text_field :type %>
+    <%= f.label "Texto" %>
+    <%= f.radio_button :genre, "texto" %>
   </div>
+
+  <div class="field">
+    <%= f.label "Puntuación" %>
+    <%= f.radio_button :genre, "puntuacion" %>
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>
