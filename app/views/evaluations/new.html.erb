@@ -1,13 +1,9 @@
-<%= form_tag(new_evaluation_path, method: "get") do %>
 
-<%= @survey.questions.each do |x| %>
-  <%= label_tag x.name %>
-  <%= text_field_tag() %>
-  </br>
-  <%= label_tag 'Profesor a evaluar: ' %>
-  <%= select_tag(:user_id, options_for_select(User.all.collect{ |u| [u.email, u.id] })) %>
-  </br>
-<%end%>
+<form>
+  <%= @survey.questions.each do |q| %>
+  <%=q.name%>
+  <input id="<%=q.id%>" name="answer[<%=q.id%>]" type="text" />
+  <%end%>
+  <input name="commit" type="submit" value="Search" />
+</form>
 
-<%= submit_tag("Evaluar") %>
-<% end %>
