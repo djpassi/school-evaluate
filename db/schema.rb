@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506201923) do
+ActiveRecord::Schema.define(version: 20170506211805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20170506201923) do
     t.datetime "updated_at",       null: false
     t.index ["question_id"], name: "index_contains_on_question_id", using: :btree
     t.index ["survey_schema_id"], name: "index_contains_on_survey_schema_id", using: :btree
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.integer  "survey_schema_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["answer_id"], name: "index_evaluations_on_answer_id", using: :btree
+    t.index ["survey_schema_id"], name: "index_evaluations_on_survey_schema_id", using: :btree
+    t.index ["user_id"], name: "index_evaluations_on_user_id", using: :btree
   end
 
   create_table "questions", force: :cascade do |t|
@@ -67,4 +78,7 @@ ActiveRecord::Schema.define(version: 20170506201923) do
 
   add_foreign_key "contains", "questions"
   add_foreign_key "contains", "survey_schemas"
+  add_foreign_key "evaluations", "answers"
+  add_foreign_key "evaluations", "survey_schemas"
+  add_foreign_key "evaluations", "users"
 end
