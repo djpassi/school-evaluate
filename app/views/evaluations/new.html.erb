@@ -1,0 +1,16 @@
+
+<form action="/evaluations" method="post" >
+  <h2> Evaluación: <%= @survey.title %></h2>
+  </br>
+  <% @survey.questions.each do |q| %>
+    <%=q.name%>
+    <input id="<%=q.id%>" name="answers[<%=q.id%>]" type="text" />
+    <input type="hidden" name="genres[<%=q.id%>]" value="<%=q.genre%>" />
+    <input type="hidden" name="names[<%=q.id%>]" value="<%=q.name%>" />
+
+    <br/>
+  <%end%>
+  <input type="hidden" name="other_params[survey_id]" value="<%= @survey.id%>" />
+  <input type="hidden" name="other_params[user_id]" value="<%= @user_id%>" />
+  <input type="submit" value="Search" />
+</form>
