@@ -1,5 +1,7 @@
 class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
+
 
   def evaluate
     @surveys = SurveySchema.all
@@ -20,6 +22,7 @@ class EvaluationsController < ApplicationController
   def new
     @evaluation = Evaluation.new
     @survey = SurveySchema.find(params[:survey_id])
+    @user_id= params[:survey_id]
   end
 
   # GET /evaluations/1/edit
@@ -29,17 +32,17 @@ class EvaluationsController < ApplicationController
   # POST /evaluations
   # POST /evaluations.json
   def create
-    @evaluation = Evaluation.new(evaluation_params)
-
-    respond_to do |format|
-      if @evaluation.save
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully created.' }
-        format.json { render :show, status: :created, location: @evaluation }
-      else
-        format.html { render :new }
-        format.json { render json: @evaluation.errors, status: :unprocessable_entity }
-      end
+    answers = params[:answers]
+    answers.each do |question_id|
+      puts question_id + answers[question_id]
+      q = Answer.create(name: params[:names][question_id],
+                      genre: params[:genres][question_id],
+                      text: params[:answers][question_id])
+      Evaluation.create(user_id: params[:other_params][:user_id].to_i,
+                        survey_schema_id:params[:other_params][:survey_id].to_i,
+                        answer_id: q.id)
     end
+    redirect_to '/evaluations', notice: 'Evaluation was successfully created.'
   end
 
   # PATCH/PUT /evaluations/1
