@@ -13,9 +13,30 @@
 
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, required: true %>
   </div>
 
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Genre</th>
+        <th colspan="3"></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @questions.each do |x| %>
+        <tr>
+          <td> <%= x.name %> </td>
+          <td> <%= x.genre %> </td>
+          <td> <p> Agregar pregunta </p> </td>
+          <td> <%= check_box_tag "questions[]", x.id %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
   <div class="actions">
     <%= f.submit %>
   </div>

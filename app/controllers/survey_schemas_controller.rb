@@ -15,16 +15,29 @@ class SurveySchemasController < ApplicationController
   # GET /survey_schemas/new
   def new
     @survey_schema = SurveySchema.new
+    @questions = Question.all
   end
 
   # GET /survey_schemas/1/edit
   def edit
+    @survey_schema = SurveySchema.find_by(id: params[:id])
+
+    @all_questions_id = Question.pluck(:id)
+    @questions_id = @survey_schema.questions.pluck(:id)
+    @other_questions_id = @all_questions_id - @questions_id
+
+    @other_questions = Question.where(id:@other_questions_id)
   end
 
   # POST /survey_schemas
   # POST /survey_schemas.json
   def create
     @survey_schema = SurveySchema.new(survey_schema_params)
+    @questions = Question.where(id: params[:questions])
+
+    @survey_schema.questions << @questions
+
+    p @survey_schema.questions
 
     respond_to do |format|
       if @survey_schema.save
@@ -40,6 +53,13 @@ class SurveySchemasController < ApplicationController
   # PATCH/PUT /survey_schemas/1
   # PATCH/PUT /survey_schemas/1.json
   def update
+    @survey_schema.questions.delete(Question.where(id:params[:delete_questions]))
+
+    @add_questions = Question.where(id: params[:add_questions])
+
+    @survey_schema.questions << @add_questions
+
+
     respond_to do |format|
       if @survey_schema.update(survey_schema_params)
         format.html { redirect_to @survey_schema, notice: 'Survey schema was successfully updated.' }

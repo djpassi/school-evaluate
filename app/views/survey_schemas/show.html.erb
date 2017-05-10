@@ -5,5 +5,26 @@
   <%= @survey_schema.title %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Genre</th>
+      <th colspan="3"></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @survey_schema.questions.each do |x| %>
+      <tr>
+        <td> <%= x.name %> </td>
+        <td> <%= x.genre %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <%= link_to 'Edit', edit_survey_schema_path(@survey_schema) %> |
 <%= link_to 'Back', survey_schemas_path %>

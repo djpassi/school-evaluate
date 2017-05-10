@@ -13,20 +13,27 @@
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, required: true %>
   </div>
 
 
   <div class="field">
     <%= f.label "Texto" %>
+<<<<<<< HEAD
+    <%= f.radio_button :genre, "text", required: true %>
+=======
     <%= f.radio_button :genre, "text" %>
+>>>>>>> e8e5094f77cc929ebc74a36901feef0b05ea235d
   </div>
 
   <div class="field">
     <%= f.label "Puntuación" %>
+<<<<<<< HEAD
+    <%= f.radio_button :genre, "score", required: true %>
+=======
     <%= f.radio_button :genre, "score" %>
+>>>>>>> e8e5094f77cc929ebc74a36901feef0b05ea235d
   </div>
-
 
   <div class="actions">
     <%= f.submit %>
