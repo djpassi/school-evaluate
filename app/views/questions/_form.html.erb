@@ -1,32 +1,37 @@
-<%= form_for(question) do |f| %>
-  <% if question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
-      <ul>
-      <% question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+
+<div class="form-horizontal">
+  <div class="form1">
+    <fieldset>
+      <legend>New question</legend>
+
+      <%= simple_form_for @question do |f| %>
+      <% if question.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+          <ul>
+          <% question.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, required: true %>
+        <%= f.input :name, as: :text, required: true%>
+        <%= f.input_field :genre, as: :radio_buttons, :collection => [["text", 'text'], ["score", 'puntuacion']], :label_method => :last,
+          :value_method => :first, input_html: { class: "form-control", required: true }%>
+          <br>
+        <div class="btn-group btn-group-justified">
+          <p><a href="/questions" class="btn btn-primary btn-lg">Questions</a>
+            <a class="btn btn-primary btn-lg"><%= f.button :submit %></a>
+          </p>
+        </div>
+      <% end %>
+
+    </fieldset>
+    <br>
+
   </div>
 
-  <div class="field">
-    <%= f.label "Texto" %>
-    <%= f.radio_button :genre, "text", required: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Puntuación" %>
-    <%= f.radio_button :genre, "score", required: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
