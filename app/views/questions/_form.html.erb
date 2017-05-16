@@ -3,7 +3,7 @@
 <div class="form-horizontal">
   <div class="form1">
     <fieldset>
-      <legend>New question</legend>
+      <legend class="question_title">New question</legend>
 
       <%= simple_form_for @question do |f| %>
       <% if question.errors.any? %>
@@ -19,12 +19,12 @@
       <% end %>
 
         <%= f.input :name, as: :text, required: true%>
-        <%= f.input_field :genre, as: :radio_buttons, :collection => [["text", 'text'], ["score", 'puntuacion']], :label_method => :last,
+        <%= f.input_field :genre, as: :radio_buttons, :collection => [["text", 'text'], ["score", 'score (1 to 5)']], :label_method => :last,
           :value_method => :first, input_html: { class: "form-control", required: true }%>
           <br>
         <div class="btn-group btn-group-justified">
-          <p><a href="/questions" class="btn btn-primary btn-lg">Questions</a>
-            <a class="btn btn-primary btn-lg"><%= f.button :submit %></a>
+          <p><a href="/questions" class="btn btn-primary btn-sm">Cancel</a>
+            <%= f.button :submit, 'Save'%>
           </p>
         </div>
       <% end %>
