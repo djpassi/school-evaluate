@@ -6,7 +6,7 @@
 <%= select_tag(:survey_id, options_for_select(SurveySchema.all.collect{ |u| [u.title, u.id] })) %>
 </br>
 <%= label_tag 'Profesor a evaluar: ' %>
-<%= select_tag(:user_id, options_for_select(User.all.collect{ |u| [u.email, u.id] })) %>
+<%= select_tag(:user_id, options_for_select(User.all.collect{ |u| [u.name, u.id] })) %>
 </br>
 
   <%= submit_tag("Evaluar") %>
