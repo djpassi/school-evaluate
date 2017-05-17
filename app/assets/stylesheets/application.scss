@@ -133,7 +133,6 @@
 
 	margin-top: 1%;
 	text-align: center;
-	color: #FFFFFF;
 }
 
 .form1{
@@ -157,7 +156,9 @@
 
 
 
-
+.navbar navbar-inverse bg-inverse{
+	margin-bottom: 0px;
+}
 
 
 
@@ -230,6 +231,16 @@ form .buttons .clear {background-color: #e9e9e9;}
 form .buttons .submit {background-color: #67ab49;}
 form .buttons .clear:hover {background-color: #ccc;}
 form .buttons .submit:hover {background-color: #14892c;}
+
+
+
+div#start-evaluate{
+  text-align: center;
+}
+
+#select-evaluate{
+	text-align-last: center;
+}
 
 header .evaluation-header{
   text-align: center;
