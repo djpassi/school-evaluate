@@ -53,9 +53,10 @@
     background: -o-linear-gradient(#4f86b7, #b3dafe); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#4f86b7, #b3dafe); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#4f86b7, #b3dafe); /* Standard syntax */
-	width: 100%;
-	height: 110%;
-	position: absolute;
+		height: 100%;
+		position: absolute;
+		width: 100%;
+
 }
 
 .login {
@@ -181,7 +182,12 @@
 
 
 
-html,body {padding:0;margin:0;}
+html,body {
+	padding:0;
+	margin:0;
+	height: 100%;
+}
+
 .wrap {
   font:12px Arial, san-serif;
 }
