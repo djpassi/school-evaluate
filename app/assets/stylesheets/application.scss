@@ -98,20 +98,50 @@
 }
 
 .home a:hover{
-	background: #e9e753;
-	color: #20262c;
+	background: #f2f2f2;
+	color: #f2f2f2;
+	text-decoration: unset;
 }
 .action {
 	width: 30%;
-	border: solid 1px;
 	margin: 5%;
 	min-height: 20em;
 	margin-top: 6em;
 	text-align: center;
-	padding-top: 5em;
-	border-radius: 50%;
-	background: lightgray;
-	color: #499be1;
+	border-radius: 42px;
+	padding-top: 1em;
+
+}
+
+.action .teacher {
+	background: url("/images/teacher.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+}
+
+.action div {
+	height: 4em;
+	line-height: 4em;
+	color: #2f2f2f;
+	font-size: 18pt;
+}
+
+.action .question{
+	background: url("/images/question.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+}
+
+.action .form{
+	background: url("/images/form.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
 }
 
 .index {
