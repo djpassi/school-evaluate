@@ -1,0 +1,39 @@
+<div class="index">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr class="primary">
+        <th class="panel-title">#</th>
+        <th>Pregunta</th>
+        <th>Respuesta</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <form action="/evaluations" method="post" >
+    <header>
+    <h2 class="evaluation-header"> Evaluación: <%= @survey.title %></h2>
+    <h3 class="evaluation-header"> Profesor: <%= User.find(@user_id).name %></h3>
+    <header>
+    <br>
+    <% contador = 0%>
+    <% @survey.questions.each do |q| %>
+
+    <tr>
+      <% contador +=1 %>
+      <td> <%= contador%> </td>
+      <td> <%= q.name%> </td>
+      <td> <input name="answers[<%=q.id%>]" type="text" /> </td>
+      <input type="hidden" name="genres[<%=q.id%>]" value="<%=q.genre%>" />
+      <input type="hidden" name="names[<%=q.id%>]" value="<%=q.name%>" />
+    </tr>
+
+      <br/>
+    <%end%>
+    </tbody>
+  <table>
+    <input type="hidden" name="other_params[survey_id]" value="<%= @survey.id%>" />
+    <input type="hidden" name="other_params[user_id]" value="<%= @user_id%>" />
+    <input class="submit-button-evaluate" type="submit" value="Responder" />
+  </form>
+
+<div>

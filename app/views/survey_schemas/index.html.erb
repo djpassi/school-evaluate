@@ -1,27 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Survey Schemas</h1>
+  <div class="page-header">
+    <div class="header">
+      <h1> Pautas de evaluación </h1>
+    </div>
+  </div>
+  <div class="index">
+    <div id="table-wrapper">
+      <div id="table-scroll">
+        <table class="table table-striped table-hover ">
+          <thead>
+            <tr class="primary">
+              <th class="panel-title"></th>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+              <th>Nombre</th>
 
-  <tbody>
-    <% @survey_schemas.each do |survey_schema| %>
-      <tr>
-        <td><%= survey_schema.title %></td>
-        <td><%= link_to 'Show', survey_schema %></td>
-        <td><%= link_to 'Edit', edit_survey_schema_path(survey_schema) %></td>
-        <td><%= link_to 'Destroy', survey_schema, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% contador = 0%>
+            <% @survey_schemas.each do |survey_schema|%>
+            <tr>
+              <% contador +=1 %>
+              <td> <%= contador %></td>
+              <td><%= link_to survey_schema.title, survey_schema %></td>
 
-<br>
-
-<%= link_to 'New Survey Schema', new_survey_schema_path %>
+              <td><%= link_to 'Editar', edit_survey_schema_path(survey_schema) %> </td>
+              <td> <%= link_to 'Eliminar', survey_schema, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <div class="btn-group btn-group-justified">
+      <p><a href="survey_schemas/new" class="btn btn-primary btn-lg">New survey</a></p>
+    </div>
+  </div>
