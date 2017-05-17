@@ -1,30 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @survey_schema.title %>
-</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Genre</th>
-      <th colspan="3"></th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @survey_schema.questions.each do |x| %>
-      <tr>
-        <td> <%= x.name %> </td>
-        <td> <%= x.genre %> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 
-<%= link_to 'Edit', edit_survey_schema_path(@survey_schema) %> |
-<%= link_to 'Back', survey_schemas_path %>
+<div class="backgroundLogin">
+  <div class="page-header">
+    <div class="header">
+      <h1> <%=@survey_schema.title%> </h1>
+    </div>
+  </div>
+  <div class="form1">
+    <div id="table-wrapper">
+      <div id="table-scroll">
+        <table class="table table-striped table-hover ">
+          <thead>
+            <tr class="primary">
+              <th class="panel-title">#</th>
+              <th>Name</th>
+              <th>Type of question</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% contador = 0%>
+            <%@survey_schema.questions.each do |question|%>
+            <tr>
+              <% contador +=1 %>
+              <td> <%= contador %></td>
+              <td><%= question.name%></td>
+              <td><%= question.genre%></td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="btn-group btn-group-justified">
+    <p>
+      <a href="/survey_schemas" class="btn btn-primary">Back</a>
+    </p>
+  </div>
+
+</div>

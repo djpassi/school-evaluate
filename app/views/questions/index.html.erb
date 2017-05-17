@@ -1,7 +1,6 @@
-<div class="backgroundLogin">
   <div class="page-header">
     <div class="header">
-      <h1> Preguntas </h1>
+      <h1> Banco de preguntas </h1>
     </div>
   </div>
   <div class="index">
@@ -25,7 +24,7 @@
           <%if question.genre == "text" %>
             <td><input type="text" disabled class="scaleWrap"> </td>
           <%else%>
-            <td><%= render 'likert_scale' %></td>
+            <td><%= render 'likert_scale_clean' %></td>
           <% end %>
           <div class="btn-group btn-group-justified">
           <td><%= link_to 'Edit', edit_question_path(question) %> </td>
@@ -35,9 +34,10 @@
       </tbody>
     </table>
 
+
     <br>
-    <div class="btn-group btn-group-justified">
-      <p><a href="questions/new" class="btn btn-primary btn-lg">New question</a></p>
+    <div class="text-right">
+
+      <a href="questions/new" class="btn btn-primary btn-lg">Agregar nueva pregunta</a>
     </div>
   </div>
-</div>

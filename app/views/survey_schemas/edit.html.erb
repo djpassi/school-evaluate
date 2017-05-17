@@ -1,80 +1,100 @@
-<h1>Editing Survey Schema</h1>
+<div class="form-horizontal">
+  <div class="form1">
+    <fieldset>
+      <legend class="question_title">Edit survey schema</legend>
 
-<%= form_for(@survey_schema) do |f| %>
-  <% if @survey_schema.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(survey_schema.errors.count, "error") %> prohibited this survey_schema from being saved:</h2>
+      <%= simple_form_for @survey_schema do |f| %>
+      <% if @survey_schema.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(survey_schema.errors.count, "error") %> prohibited this survey_schema from being saved:</h2>
 
-      <ul>
-      <% survey_schema.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% survey_schema.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, required: true %>
+        <%= f.input :title, as: :text, required: true%>
+
+        <legend class="question_title">Actual questions</legend>
+
+        <% @all_questions_id %>
+        <% @questions_id %>
+        <% @other_questions_id %>
+
+        <div id="table-wrapper">
+          <div id="table-edit-scroll">
+            <table class="table table-striped table-hover ">
+              <thead>
+                <tr class="primary">
+                  <th class="panel-title">#</th>
+                  <th>Name</th>
+                  <th>Type of question</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% contador = 0%>
+                <% @survey_schema.questions.each do |question|%>
+                <tr>
+                  <% contador +=1 %>
+                  <td> <%= contador %></td>
+                  <td><%= question.name%></td>
+                  <td><%= question.genre%></td>
+                  <div class="btn-group btn-group-justified">
+                  <td> <p> Borrar pregunta </p> </td>
+                  <td> <%= check_box_tag "delete_questions[]", question.id %> </td>
+                </tr>
+                <%end%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <legend class="question_title">new questions</legend>
+
+
+        <div id="table-wrapper">
+          <div id="table-edit-scroll">
+            <table class="table table-striped table-hover ">
+              <thead>
+                <tr class="primary">
+                  <th class="panel-title">#</th>
+                  <th>Name</th>
+                  <th>Type of question</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% contador = 0%>
+                <% @other_questions.each do |question|%>
+                <tr>
+                  <% contador +=1 %>
+                  <td> <%= contador %></td>
+                  <td><%= question.name%></td>
+                  <td><%= question.genre%></td>
+                  <div class="btn-group btn-group-justified">
+                  <td> <p> agregar pregunta </p> </td>
+                  <td> <%= check_box_tag "add_questions[]", question.id %> </td>
+                </tr>
+                <%end%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="btn-group btn-group-justified">
+        <p><a href="/survey_schemas" class="btn btn-primary btn-sm">Cancel</a>
+          <%= f.button :submit, 'Save'%>
+        </p>
+
+      <% end %>
+
+    </fieldset>
+    <br>
+
   </div>
 
-  <h1> Preguntas actuales </h1>
-
-  <%= @all_questions_id %>
-  <%= @questions_id %>
-
-  <%= @other_questions_id %>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Genre</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @survey_schema.questions.each do |x| %>
-        <tr>
-          <td> <%= x.name %> </td>
-          <td> <%= x.genre %> </td>
-          <td> <p> Eliminar pregunta </p> </td>
-          <td> <%= check_box_tag "delete_questions[]", x.id %> </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <h1> Agregar preguntas </h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Genre</th>
-        <th colspan="3"></th>
-
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @other_questions.each do |x| %>
-        <tr>
-          <td> <%= x.name %> </td>
-          <td> <%= x.genre %> </td>
-          <td> <p> Agregar pregunta </p> </td>
-          <td> <%= check_box_tag "add_questions[]", x.id %> </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-
-<% end %>
-
-<%= link_to 'Show', @survey_schema %> |
-<%= link_to 'Back', survey_schemas_path %>
+</div>
