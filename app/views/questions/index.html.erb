@@ -27,8 +27,8 @@
             <td><%= render 'likert_scale_clean' %></td>
           <% end %>
           <div class="btn-group btn-group-justified">
-          <td><%= link_to 'Edit', edit_question_path(question) %> </td>
-          <td> <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Editar', edit_question_path(question) %> </td>
+          <td> <%= link_to 'Eliminar', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <%end%>
       </tbody>

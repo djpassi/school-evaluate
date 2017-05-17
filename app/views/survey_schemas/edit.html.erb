@@ -1,7 +1,7 @@
 <div class="form-horizontal">
   <div class="form1">
     <fieldset>
-      <legend class="question_title">Edit survey schema</legend>
+      <legend class="question_title">Editar pauta de evaluación</legend>
 
       <%= simple_form_for @survey_schema do |f| %>
       <% if @survey_schema.errors.any? %>
@@ -16,9 +16,9 @@
         </div>
       <% end %>
 
-        <%= f.input :title, as: :text, required: true%>
+        <%= f.input :title, :label => "Titulo",as: :text, required: true%>
 
-        <legend class="question_title">Actual questions</legend>
+        <legend class="question_title">Preguntas actuales</legend>
 
         <% @all_questions_id %>
         <% @questions_id %>
@@ -30,8 +30,8 @@
               <thead>
                 <tr class="primary">
                   <th class="panel-title">#</th>
-                  <th>Name</th>
-                  <th>Type of question</th>
+                  <th>Nombre de pregunta</th>
+                  <th>Título de pregunta</th>
                   <th></th>
                 </tr>
               </thead>
@@ -42,7 +42,11 @@
                   <% contador +=1 %>
                   <td> <%= contador %></td>
                   <td><%= question.name%></td>
-                  <td><%= question.genre%></td>
+                  <% if question.genre=='score'%>
+                  <td>Puntuación</td>
+                  <% else %>
+                  <td>Texto</td>
+                  <%end%>
                   <div class="btn-group btn-group-justified">
                   <td> <p> Borrar pregunta </p> </td>
                   <td> <%= check_box_tag "delete_questions[]", question.id %> </td>
@@ -53,7 +57,7 @@
           </div>
         </div>
 
-        <legend class="question_title">new questions</legend>
+        <legend class="question_title">Nuevas preguntas</legend>
 
 
         <div id="table-wrapper">
@@ -62,8 +66,8 @@
               <thead>
                 <tr class="primary">
                   <th class="panel-title">#</th>
-                  <th>Name</th>
-                  <th>Type of question</th>
+                  <th>Nombre de pregunta</th>
+                  <th>Título de pregunta</th>
                   <th></th>
                 </tr>
               </thead>
@@ -74,7 +78,11 @@
                   <% contador +=1 %>
                   <td> <%= contador %></td>
                   <td><%= question.name%></td>
-                  <td><%= question.genre%></td>
+                  <% if question.genre=='score'%>
+                  <td>Puntuación</td>
+                  <% else %>
+                  <td>Texto</td>
+                  <%end%>
                   <div class="btn-group btn-group-justified">
                   <td> <p> agregar pregunta </p> </td>
                   <td> <%= check_box_tag "add_questions[]", question.id %> </td>
@@ -86,8 +94,8 @@
         </div>
 
         <div class="btn-group btn-group-justified">
-        <p><a href="/survey_schemas" class="btn btn-primary btn-sm">Cancel</a>
-          <%= f.button :submit, 'Save'%>
+        <p><a href="/survey_schemas" class="btn btn-primary btn-sm">Cancelar</a>
+          <%= f.button :submit, 'Guardar'%>
         </p>
 
       <% end %>
