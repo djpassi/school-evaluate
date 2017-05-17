@@ -121,7 +121,14 @@
 }
 
 
-
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:20em;
+  overflow:auto;
+  margin-top:20px;
+}
 
 
 
