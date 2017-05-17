@@ -10,6 +10,41 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  */
+.scaleWrap {
+	width: 15em;
+}
+
+.scaleWrap .wrapper {
+	display: inline-flex;
+	width: 100%;
+	position: relative;
+}
+
+.scaleWrap .wrapper .options {
+	width: 60%;
+	display: inline-flex;
+}
+
+.scaleWrap .wrapper .options .option {
+	width: 2em;
+	display: inline-block;
+	text-align: center;
+	margin-right: 1em;
+}
+
+.scaleWrap .wrapper .options .option .multipleChoise{
+	margin: 0px;
+	line-height: 100%;
+	display: inline-flex;
+	height: 2em;
+	width: 2em;
+}
+
+.scaleWrap .wrapper .options .option .optionLabel{
+	color: #2f2f2f;
+	font-size: 12pt;
+}
+
 
 .backgroundLogin {
 	background: #4f86b7; /* For browsers that do not support gradients */
