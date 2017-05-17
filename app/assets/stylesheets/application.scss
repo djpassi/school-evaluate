@@ -156,16 +156,20 @@
 
 
 
-.navbar navbar-inverse bg-inverse{
-	margin-bottom: 0px;
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:20em;
+  overflow:auto;
+  margin-top:20px;
 }
 
 
 
-
-
-
-
+.navbar navbar-inverse bg-inverse{
+	margin-bottom: 0px;
+}
 
 html,body {padding:0;margin:0;}
 .wrap {
