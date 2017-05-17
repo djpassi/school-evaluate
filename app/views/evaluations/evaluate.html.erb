@@ -1,13 +1,22 @@
-<h1>Evaluar profesor</h1>
+<div class="page-header">
+  <div class="header">
+    <h1> Evaluar Profesor </h1>
+  </div>
+</div>
+<div id='start-evaluate' class="index">
 
 <%= form_tag(new_evaluation_path, method: "get") do %>
 
-<%= label_tag 'Pauta a elegir: ' %>
-<%= select_tag(:survey_id, options_for_select(SurveySchema.all.collect{ |u| [u.title, u.id] })) %>
+<%= label_tag 'Pauta a elegir:' %>
+<%= select_tag(:survey_id, options_for_select(SurveySchema.all.collect{ |u| [u.title, u.id] }),{:class=>'form-control',:id=>'select-evaluate'}) %>
 </br>
 <%= label_tag 'Profesor a evaluar: ' %>
-<%= select_tag(:user_id, options_for_select(User.all.collect{ |u| [u.email, u.id] })) %>
+<%= select_tag(:user_id, options_for_select(User.all.collect{ |u| [u.email, u.id] }),{:class=>'form-control',:id=>'select-evaluate'}) %>
 </br>
 
-  <%= submit_tag("Evaluar") %>
+  <%= submit_tag("Comenzar evaluación", :class=>'btn btn-primary btn-lg') %>
+
+
 <% end %>
+
+</div>
