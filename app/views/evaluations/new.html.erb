@@ -22,12 +22,13 @@
       <% contador +=1 %>
       <td> <%= contador%> </td>
       <td> <%= q.name%> </td>
-      <%if q.genre == "text" %>
-          <td> <input name="answers[<%=q.id%>]" type="text" /> </td>
-      <%else%>
-          <td><%= render partial: "questions/likert_scale", :locals => {:q => q} %></td>
-      <%end%>
-      
+
+    <!--  <% if q.genre == 'text'%>
+        <td> <input name="answers[<%=q.id%>]" type="text" /> </td>
+      <% else %>
+      <td> <%= render 'questions/likert_scale' %> </td>
+      <% end %>-->
+      <td> <input name="answers[<%=q.id%>]" type="text" /> </td>
       <input type="hidden" name="genres[<%=q.id%>]" value="<%=q.genre%>" />
       <input type="hidden" name="names[<%=q.id%>]" value="<%=q.name%>" />
     </tr>
@@ -38,7 +39,7 @@
   <table>
     <input type="hidden" name="other_params[survey_id]" value="<%= @survey.id%>" />
     <input type="hidden" name="other_params[user_id]" value="<%= @user_id%>" />
-    <input class="submit-button-evaluate" type="submit" value="Responder" />
+    <input type="submit" value="Responder" />
   </form>
 
 <div>
