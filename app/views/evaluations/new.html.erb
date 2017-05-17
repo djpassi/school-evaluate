@@ -22,7 +22,12 @@
       <% contador +=1 %>
       <td> <%= contador%> </td>
       <td> <%= q.name%> </td>
-      <td> <input name="answers[<%=q.id%>]" type="text" /> </td>
+      <%if q.genre == "text" %>
+          <td> <input name="answers[<%=q.id%>]" type="text" /> </td>
+      <%else%>
+          <td><%= render partial: "questions/likert_scale", :locals => {:q => q} %></td>
+      <%end%>
+      
       <input type="hidden" name="genres[<%=q.id%>]" value="<%=q.genre%>" />
       <input type="hidden" name="names[<%=q.id%>]" value="<%=q.name%>" />
     </tr>
