@@ -7,7 +7,6 @@
       <% if survey_schema.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(survey_schema.errors.count, "error") %> prohibited this survey_schema from being saved:</h2>
-
           <ul>
           <% survey_schema.errors.full_messages.each do |message| %>
             <li><%= message %></li>

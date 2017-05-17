@@ -10,41 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  */
-.scaleWrap {
-	width: 15em;
-}
-
-.scaleWrap .wrapper {
-	display: inline-flex;
-	width: 100%;
-	position: relative;
-}
-
-.scaleWrap .wrapper .options {
-	width: 60%;
-	display: inline-flex;
-}
-
-.scaleWrap .wrapper .options .option {
-	width: 2em;
-	display: inline-block;
-	text-align: center;
-	margin-right: 1em;
-}
-
-.scaleWrap .wrapper .options .option .multipleChoise{
-	margin: 0px;
-	line-height: 100%;
-	display: inline-flex;
-	height: 2em;
-	width: 2em;
-}
-
-.scaleWrap .wrapper .options .option .optionLabel{
-	color: #2f2f2f;
-	font-size: 12pt;
-}
-
 
 .backgroundLogin {
 	background: #4f86b7; /* For browsers that do not support gradients */
@@ -53,7 +18,7 @@
     background: -moz-linear-gradient(#4f86b7, #b3dafe); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#4f86b7, #b3dafe); /* Standard syntax */
 	width: 100%;
-	height: 100%;
+	height: 110%;
 	position: absolute;
 }
 
@@ -133,6 +98,7 @@
 
 	margin-top: 1%;
 	text-align: center;
+	color: #FFFFFF;
 }
 
 .form1{
@@ -140,6 +106,7 @@
 	margin-left: 25%;
 	margin-right: 25%;
 	margin-top: 4%;
+	margin-bottom: 4%;
 	border: solid 2px;
 	border-radius: 6px;
 	padding: 20px 30px 40px 30px;
@@ -155,21 +122,28 @@
 }
 
 
-
 #table-wrapper {
   position:relative;
 }
+
 #table-scroll {
   height:20em;
   overflow:auto;
   margin-top:20px;
 }
-
-
-
-.navbar navbar-inverse bg-inverse{
-	margin-bottom: 0px;
+#table-edit-scroll{
+	height:10em;
+	overflow:auto;
+	margin-top:5px;
 }
+
+
+
+
+
+
+
+
 
 html,body {padding:0;margin:0;}
 .wrap {
@@ -235,17 +209,3 @@ form .buttons .clear {background-color: #e9e9e9;}
 form .buttons .submit {background-color: #67ab49;}
 form .buttons .clear:hover {background-color: #ccc;}
 form .buttons .submit:hover {background-color: #14892c;}
-
-
-
-div#start-evaluate{
-  text-align: center;
-}
-
-#select-evaluate{
-	text-align-last: center;
-}
-
-header .evaluation-header{
-  text-align: center;
-}
