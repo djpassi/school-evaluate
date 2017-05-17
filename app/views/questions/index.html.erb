@@ -1,6 +1,6 @@
   <div class="page-header">
     <div class="header">
-      <h1> Questions </h1>
+      <h1> Preguntas </h1>
     </div>
   </div>
   <div class="index">
@@ -8,10 +8,10 @@
       <thead>
         <tr class="primary">
           <th class="panel-title">#</th>
-          <th>Title</th>
-          <th>Type of question</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th>Título</th>
+          <th>Tipo de pregunta</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -22,9 +22,9 @@
           <td> <%= contador %></td>
           <td><%= question.name%></td>
           <%if question.genre == "text" %>
-            <td><img src="images/textbox.png" width="50%" ></img> </td>
+            <td><input type="text" disabled class="scaleWrap"> </td>
           <%else%>
-            <td><img src="images/scale.jpg" width="50%" height="40%"></img> </td>
+            <td><%= render 'likert_scale' %></td>
           <% end %>
           <div class="btn-group btn-group-justified">
           <td><%= link_to 'Edit', edit_question_path(question) %> </td>
