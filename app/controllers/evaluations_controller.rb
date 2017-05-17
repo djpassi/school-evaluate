@@ -2,7 +2,6 @@ class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
 
-
   def evaluate
     @surveys = SurveySchema.all
     @evaluations = Array.new
@@ -10,7 +9,6 @@ class EvaluationsController < ApplicationController
     Evaluation.pluck(:evaluation_number).uniq.each do |x|
       @evaluations << Evaluation.find_by(evaluation_number:x)
     end
-
   end
 
   def show_evaluation
@@ -21,6 +19,13 @@ class EvaluationsController < ApplicationController
   # GET /evaluations.json
   def index
     @evaluations = Evaluation.all
+  end
+
+  def index_evaluations
+    @evaluations = Array.new
+    Evaluation.pluck(:evaluation_number).uniq.each do |x|
+      @evaluations << Evaluation.find_by(evaluation_number:x)
+    end
   end
 
   # GET /evaluations/1
