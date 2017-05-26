@@ -1,5 +1,5 @@
 <div class="home">
-
+	<% if current_user.admin?%>
 	<a class="action" href="/evaluate">
 		 <div class="teacher"></div>
 		 <div>Evaluar Un Profesor</div>
@@ -12,5 +12,6 @@
 		<div class="form"></div>
 		<div>Pautas de Evaluación</div>
 	</a>
+	<%end%>
 
 </div>

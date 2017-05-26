@@ -1,5 +1,6 @@
 class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
+  before_action :confirm_logged_in
   skip_before_filter :verify_authenticity_token
 
   def evaluate

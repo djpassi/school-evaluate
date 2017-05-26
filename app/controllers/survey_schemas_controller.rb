@@ -1,5 +1,6 @@
 class SurveySchemasController < ApplicationController
   before_action :set_survey_schema, only: [:show, :edit, :update, :destroy]
+  before_action :confirm_logged_in
 
   # GET /survey_schemas
   # GET /survey_schemas.json

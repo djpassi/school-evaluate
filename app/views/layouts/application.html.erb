@@ -30,10 +30,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1  ">
       <ul class="nav navbar-nav">
+        <% if current_user.admin?%>
         <li><a href="/evaluate">Evaluar Profesor</a></li>
         <li><a href="/questions">Banco de preguntas</a></li>
         <li><a href="/survey_schemas">Pautas de Evaluación</a></li>
         <li><a href="/index_evaluations">Evaluaciones recientes</a></li>
+        <%end%>
       </ul>
       <form class="navbar-form navbar-left">
 
