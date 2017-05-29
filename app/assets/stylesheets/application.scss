@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  */
+
 .scaleWrap {
 	width: 15em;
 }
@@ -52,9 +53,10 @@
     background: -o-linear-gradient(#4f86b7, #b3dafe); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#4f86b7, #b3dafe); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#4f86b7, #b3dafe); /* Standard syntax */
-	width: 100%;
-	height: 100%;
-	position: absolute;
+		height: 100%;
+		position: absolute;
+		width: 100%;
+
 }
 
 .login {
@@ -96,20 +98,64 @@
 }
 
 .home a:hover{
-	background: #e9e753;
-	color: #20262c;
+	background: #f2f2f2;
+	color: #f2f2f2;
+	text-decoration: unset;
 }
 .action {
 	width: 30%;
-	border: solid 1px;
 	margin: 5%;
 	min-height: 20em;
 	margin-top: 6em;
 	text-align: center;
-	padding-top: 5em;
-	border-radius: 50%;
-	background: lightgray;
-	color: #499be1;
+	border-radius: 42px;
+	padding-top: 1em;
+
+}
+
+.action .teacher {
+	background: url("/images/teacher.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+}
+
+.action div {
+	height: 4em;
+	line-height: 4em;
+	color: #2f2f2f;
+	font-size: 18pt;
+}
+
+.action .question{
+	background: url("/images/question.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+}
+
+.action .form{
+	background: url("/images/form.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+}
+.action .new_user{
+	background: url("/images/new-user.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+}
+.action .change_role{
+	background: url("/images/switch-user.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
 }
 
 .index {
@@ -126,13 +172,14 @@
 	background: #F3F9FA; /* For browsers that do not support gradients */
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: relative;
 
 }
 .header {
 
 	margin-top: 1%;
 	text-align: center;
+	color: #FFFFFF;
 }
 
 .form1{
@@ -140,6 +187,7 @@
 	margin-left: 25%;
 	margin-right: 25%;
 	margin-top: 4%;
+	margin-bottom: 4%;
 	border: solid 2px;
 	border-radius: 6px;
 	padding: 20px 30px 40px 30px;
@@ -155,23 +203,35 @@
 }
 
 
-
 #table-wrapper {
   position:relative;
 }
+
 #table-scroll {
   height:20em;
   overflow:auto;
   margin-top:20px;
 }
-
-
-
-.navbar navbar-inverse bg-inverse{
-	margin-bottom: 0px;
+#table-edit-scroll{
+	height:10em;
+	overflow:auto;
+	margin-top:5px;
 }
 
-html,body {padding:0;margin:0;}
+
+
+
+
+
+
+
+
+html,body {
+	padding:0;
+	margin:0;
+	height: 100%;
+}
+
 .wrap {
   font:12px Arial, san-serif;
 }
@@ -235,17 +295,3 @@ form .buttons .clear {background-color: #e9e9e9;}
 form .buttons .submit {background-color: #67ab49;}
 form .buttons .clear:hover {background-color: #ccc;}
 form .buttons .submit:hover {background-color: #14892c;}
-
-
-
-div#start-evaluate{
-  text-align: center;
-}
-
-#select-evaluate{
-	text-align-last: center;
-}
-
-header .evaluation-header{
-  text-align: center;
-}

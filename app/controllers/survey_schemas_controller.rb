@@ -1,25 +1,31 @@
 class SurveySchemasController < ApplicationController
   before_action :set_survey_schema, only: [:show, :edit, :update, :destroy]
+  before_action :confirm_logged_in
+
 
   # GET /survey_schemas
   # GET /survey_schemas.json
   def index
+    authorize SurveySchema
     @survey_schemas = SurveySchema.all
   end
 
   # GET /survey_schemas/1
   # GET /survey_schemas/1.json
   def show
+    authorize SurveySchema
   end
 
   # GET /survey_schemas/new
   def new
+    authorize SurveySchema
     @survey_schema = SurveySchema.new
     @questions = Question.all
   end
 
   # GET /survey_schemas/1/edit
   def edit
+    authorize SurveySchema
     @survey_schema = SurveySchema.find_by(id: params[:id])
 
     @all_questions_id = Question.pluck(:id)
@@ -32,6 +38,7 @@ class SurveySchemasController < ApplicationController
   # POST /survey_schemas
   # POST /survey_schemas.json
   def create
+    authorize SurveySchema
     @survey_schema = SurveySchema.new(survey_schema_params)
     @questions = Question.where(id: params[:questions])
 
@@ -53,6 +60,7 @@ class SurveySchemasController < ApplicationController
   # PATCH/PUT /survey_schemas/1
   # PATCH/PUT /survey_schemas/1.json
   def update
+    authorize SurveySchema
     @survey_schema.questions.delete(Question.where(id:params[:delete_questions]))
 
     @add_questions = Question.where(id: params[:add_questions])
@@ -74,6 +82,7 @@ class SurveySchemasController < ApplicationController
   # DELETE /survey_schemas/1
   # DELETE /survey_schemas/1.json
   def destroy
+    authorize SurveySchema
     @survey_schema.destroy
     respond_to do |format|
       format.html { redirect_to survey_schemas_url, notice: 'Survey schema was successfully destroyed.' }

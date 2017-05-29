@@ -15,8 +15,8 @@
           <thead>
             <tr class="primary">
               <th class="panel-title">#</th>
-              <th>Name</th>
-              <th>Type of question</th>
+              <th>Nombre de pregunta</th>
+              <th>Tipo de pregunta</th>
             </tr>
           </thead>
           <tbody>
@@ -26,17 +26,21 @@
               <% contador +=1 %>
               <td> <%= contador %></td>
               <td><%= question.name%></td>
-              <td><%= question.genre%></td>
+              <% if question.genre=='score'%>
+              <td>Puntuación</td>
+              <% else %>
+              <td>Texto</td>
+              <%end%>
             </tr>
             <%end%>
           </tbody>
         </table>
       </div>
     </div>
+    <div class="btn-group btn-group-justified">
+    <p>
+      <a href="/survey_schemas" class="btn btn-primary">Ir a pautas de evaluación</a>
+    </p>
   </div>
+
 </div>
-
-
-
-<%= link_to 'Edit', edit_survey_schema_path(@survey_schema) %> |
-<%= link_to 'Back', survey_schemas_path %>

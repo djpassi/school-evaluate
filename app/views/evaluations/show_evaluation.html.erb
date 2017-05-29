@@ -1,0 +1,32 @@
+<div class="index">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr class="primary">
+        <th class="panel-title">#</th>
+        <th>Pregunta</th>
+        <th>Respuesta</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <form action="/evaluations" method="post" >
+    <header>
+    <h2 class="evaluation-header"> Evaluación del profesor <%= User.find_by(id:@evaluation[0].user_id).name %></h2>
+    <header>
+    <br>
+    <% contador = 0%>
+    <%  @evaluation.each do |q| %>
+    <tr>
+      <% contador +=1 %>
+      <td> <%= contador%></td>
+      <% s = Answer.find_by(id:q.answer_id) %>
+      <td> <%=s.name %> </td>
+      <td> <input name="answers[<%=q.id%>]" type="text" value= <%= s.text %> /> </td>
+    </tr>
+
+      <br/>
+    <%end%>
+    </tbody>
+  <table>
+  </form>
+<div>

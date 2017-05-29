@@ -1,12 +1,27 @@
 <div class="home">
+	<% if current_user.vip?%>
 	<a class="action" href="/evaluate">
-		 <div class="actionTitle"><h1>Evaluar Un Profesor</h1></div>
+		 <div class="teacher"></div>
+		 <div>Evaluar Un Profesor</div>
 	</a>
 	<a class="action" href="/questions">
-		 <div class="actionTitle"><h1>Banco de preguntas</h1></div>
+		 <div class="question"></div>
+		 <div>Banco de preguntas</div>
 	</a>
 	<a class="action" href="/survey_schemas">
-		 <h1>Pautas de Evaluación</h1>
+		<div class="form"></div>
+		<div>Pautas de Evaluación</div>
 	</a>
+	<%elsif current_user.admin?%>
+	<a class="action" href="/users/sign_up">
+		 <div class="new_user"></div>
+		 <div>Nuevo usuario</div>
+	</a>
+	<a class="action" href="/home/change_rol">
+		 <div class="change_role"></div>
+		 <div>Cambiar Rol usuario</div>
+	</a>
+
+	<%end%>
 
 </div>

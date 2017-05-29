@@ -7,11 +7,11 @@
     <table class="table table-striped table-hover ">
       <thead>
         <tr class="primary">
-          <th class="panel-title"></th>
+          <th class="panel-title">#</th>
           <th>Título</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>Tipo de pregunta</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +24,7 @@
           <%if question.genre == "text" %>
             <td><input type="text" disabled class="scaleWrap"> </td>
           <%else%>
-            <td><%= render 'likert_scale' %></td>
+            <td><%= render 'likert_scale_clean' %></td>
           <% end %>
           <div class="btn-group btn-group-justified">
           <td><%= link_to 'Editar', edit_question_path(question) %> </td>
@@ -33,6 +33,7 @@
         <%end%>
       </tbody>
     </table>
+
 
     <br>
     <div class="text-right">
