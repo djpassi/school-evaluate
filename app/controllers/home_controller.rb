@@ -7,11 +7,18 @@ class HomeController < ApplicationController
 			if current_user.admin?
 
 			else
-				
+
 			end
 
 		end
 
+	end
+	def change_rol
+		if current_user.admin?
+			@users = User.all
+		else
+			redirect_to index_path
+		end
 
 
 	end

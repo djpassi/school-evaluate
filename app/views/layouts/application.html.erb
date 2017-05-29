@@ -42,10 +42,14 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= current_user.name %><span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <%= current_user.name  %><span class="caret"></span></a>
           <ul class="dropdown-menu">
+            <%if current_user.admin?%>
+          <li><%= link_to('<span class="glyphicon glyphicon-ok"></span> Cambiar roles usuarios'.html_safe, home_change_rol_path) %></li>
+          <%end%>
+          <li><%= link_to('<span class="glyphicon glyphicon-cog"></span> Cambiar contraseña'.html_safe, edit_user_registration_path) %></li>
           <li><%= link_to('<span class="glyphicon glyphicon-log-out"></span> Salir'.html_safe, destroy_user_session_path , :method => :delete) %></li>
-                <li><%= link_to('<span class="glyphicon glyphicon-cog"></span> Cambiar contraseña'.html_safe, edit_user_registration_path) %></li>
+
 
           </ul>
         </li>
