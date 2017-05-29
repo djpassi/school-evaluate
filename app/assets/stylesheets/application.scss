@@ -143,6 +143,20 @@
 	height: 100%;
 	margin-left: 10%;
 }
+.action .new_user{
+	background: url("/images/new-user.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+}
+.action .change_role{
+	background: url("/images/switch-user.png");
+	background-size: cover;
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+}
 
 .index {
 	width: 95%;
@@ -158,7 +172,7 @@
 	background: #F3F9FA; /* For browsers that do not support gradients */
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: relative;
 
 }
 .header {

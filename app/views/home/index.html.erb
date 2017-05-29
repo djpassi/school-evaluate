@@ -1,5 +1,5 @@
 <div class="home">
-
+	<% if current_user.vip?%>
 	<a class="action" href="/evaluate">
 		 <div class="teacher"></div>
 		 <div>Evaluar Un Profesor</div>
@@ -12,5 +12,16 @@
 		<div class="form"></div>
 		<div>Pautas de Evaluación</div>
 	</a>
+	<%elsif current_user.admin?%>
+	<a class="action" href="/users/sign_up">
+		 <div class="new_user"></div>
+		 <div>Nuevo usuario</div>
+	</a>
+	<a class="action" href="/home/change_rol">
+		 <div class="change_role"></div>
+		 <div>Cambiar Rol usuario</div>
+	</a>
+
+	<%end%>
 
 </div>

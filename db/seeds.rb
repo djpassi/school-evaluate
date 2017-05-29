@@ -7,14 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Usuarios
-u1 = User.create(name:'Diego Passi',email:'djpassi@uc.cl',password:'123456',password_confirmation:'123456',role:'User')
-u2 = User.create(name:'David Galemiri',email:'dagalemiri@uc.cl',password:'123456',password_confirmation:'123456',role:'User')
-u3 = User.create(name:'Juan Marquez',email:'jgmarquez@uc.cl',password:'123456',password_confirmation:'123456',role:'User')
-u4 = User.create(name:'Felipe De La Fuente',email:'fadelafuente1@uc.cl',password:'123456',password_confirmation:'123456',role:'User')
-u5 = User.create(name:'Director',email:'director@uc.cl',password:'123456',password_confirmation:'123456',role:'User')
-u6 = User.create(name:'Jefe UTP',email:'utp@uc.cl',password:'123456',password_confirmation:'123456',role:'User')
-u7 = User.create(name:'Profesor 1',email:'profesor1@uc.cl',password:'123456',password_confirmation:'123456',role:'User')
-u8 = User.create(name:'Profesor 2',email:'profesor2@uc.cl',password:'123456',password_confirmation:'123456',role:'User')
+u1 = User.create(name:'Diego Passi',email:'djpassi@uc.cl',password:'123456',password_confirmation:'123456')
+u2 = User.create(name:'David Galemiri',email:'dagalemiri@uc.cl',password:'123456',password_confirmation:'123456')
+u3 = User.create(name:'Juan Marquez',email:'jgmarquez@uc.cl',password:'123456',password_confirmation:'123456')
+u4 = User.create(name:'Felipe De La Fuente',email:'fadelafuente1@uc.cl',password:'123456',password_confirmation:'123456')
+u5 = User.create(name:'Director',email:'director@uc.cl',password:'123456',password_confirmation:'123456',role: :vip)
+u6 = User.create(name:'Jefe UTP',email:'utp@uc.cl',password:'123456',password_confirmation:'123456')
+u7 = User.create(name:'Profesor 1',email:'profesor1@uc.cl',password:'123456',password_confirmation:'123456')
+u8 = User.create(name:'Profesor 2',email:'profesor2@uc.cl',password:'123456',password_confirmation:'123456')
+u9 = User.create(name:'admin',email:'admin@uc.cl',password:'123456',password_confirmation:'123456',role: :admin)
 
 
 #Pautas

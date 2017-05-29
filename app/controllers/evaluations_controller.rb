@@ -1,8 +1,10 @@
 class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
+  before_action :confirm_logged_in
   skip_before_filter :verify_authenticity_token
 
   def evaluate
+    authorize Evaluation
     @surveys = SurveySchema.all
     @evaluations = Array.new
 
@@ -12,16 +14,19 @@ class EvaluationsController < ApplicationController
   end
 
   def show_evaluation
+    authorize Evaluation
     @evaluation = Evaluation.where(evaluation_number: params[:id])
   end
 
   # GET /evaluations
   # GET /evaluations.json
   def index
+    authorize Evaluation
     @evaluations = Evaluation.all
   end
 
   def index_evaluations
+    authorize Evaluation
     @evaluations = Array.new
     Evaluation.pluck(:evaluation_number).uniq.each do |x|
       @evaluations << Evaluation.find_by(evaluation_number:x)
@@ -31,10 +36,12 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/1
   # GET /evaluations/1.json
   def show
+    authorize Evaluation
   end
 
   # GET /evaluations/new
   def new
+    authorize Evaluation
     @evaluation = Evaluation.new
     @survey = SurveySchema.find(params[:survey_id])
     @user_id = params[:user_id]
@@ -42,11 +49,13 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/1/edit
   def edit
+    authorize Evaluation
   end
 
   # POST /evaluations
   # POST /evaluations.json
   def create
+    authorize Evaluation
     eval = Evaluation.all
     if eval.count > 0
       n = Evaluation.last[:evaluation_number]+1
