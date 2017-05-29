@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
 
 	def index
+
 		if user_signed_in?
 			if current_user.admin?
 
@@ -14,7 +15,7 @@ class HomeController < ApplicationController
 
 	end
 	def change_rol
-		if current_user.admin?
+		if current_user.admin? || current_user.vip? 
 			@users = User.all
 		else
 			redirect_to index_path

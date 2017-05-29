@@ -2,9 +2,11 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :confirm_logged_in
 
+
   # GET /questions
   # GET /questions.json
   def index
+    authorize Question
     @questions = Question.all
   end
 
@@ -15,6 +17,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    authorize Question
     @question = Question.new
   end
 
@@ -25,6 +28,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
+    authorize Question
     @question = Question.new(question_params)
 
     respond_to do |format|
@@ -41,6 +45,7 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    authorize Question
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to edit_question_path(@question.id), notice: 'Pregunta actualizada' }
@@ -55,6 +60,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
+    authorize Question
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
