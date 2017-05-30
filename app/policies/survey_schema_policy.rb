@@ -15,6 +15,9 @@ class SurveySchemaPolicy
   def edit?
     @current_user.vip?
   end
+  def show?
+    current_user.vip?
+  end
   def create?
     @current_user.vip?
   end
