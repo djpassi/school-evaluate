@@ -6,4 +6,22 @@ class UsersController < ApplicationController
     redirect_to :back
     flash[:notice]= "Rol cambiado"
   end
+
+
+
+  def index;
+      @users = User.all
+  end
+  def show;
+      @user = User.find(params[:id])
+  end
+
+  private
+  def set_user
+   @user = User.find(params[:id])
+  end
+  def user_params
+    params.require(:user).permit(:name, :email)
+  end
+
 end

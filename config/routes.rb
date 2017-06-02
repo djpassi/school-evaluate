@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 	get "index_evaluations", to:'evaluations#index_evaluations', as: 'index_evaluations'
   put 'users/:id/change_role' => "users#change_role", as: 'change_role'
 
+  get "users/:id", to:'users#show', as: 'users_show'
+  get "users/", to:'users#index', as: 'users_index'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
