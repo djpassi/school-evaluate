@@ -39,8 +39,13 @@ class SurveySchemasController < ApplicationController
   # POST /survey_schemas.json
   def create
     authorize SurveySchema
+    p "szdkjfbndksjfñadjsnfajsdnfjkadsnfajksndfajsd"
+    p survey_schema_params
+
     @survey_schema = SurveySchema.new(survey_schema_params)
+    @survey_schema.cycle = params[:cycle]
     @questions = Question.where(id: params[:questions])
+
 
     @survey_schema.questions << @questions
 
@@ -98,6 +103,6 @@ class SurveySchemasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_schema_params
-      params.require(:survey_schema).permit(:title)
+      params.require(:survey_schema).permit(:title,:cycle)
     end
 end

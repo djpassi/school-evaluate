@@ -57,23 +57,21 @@ class EvaluationsController < ApplicationController
   # POST /evaluations.json
   def create
     authorize Evaluation
-    eval = Evaluation.all
-    if eval.count > 0
-      n = Evaluation.last[:evaluation_number]+1
-    else
-      n = 1
-    end
     answers = params[:answers]
+    answers_array = Array.new
     answers.each do |question_id|
-      puts question_id + answers[question_id]
-      q = Answer.create(name: params[:names][question_id],
+      answers_array << Answer.create(name: params[:names][question_id],
                       genre: params[:genres][question_id],
                       text: params[:answers][question_id])
-      Evaluation.create(user_id: params[:other_params][:user_id].to_i,
-                        survey_schema_id:params[:other_params][:survey_id].to_i,
-                        answer_id: q.id, evaluation_number:n)
+
     end
-    redirect_to show_evaluation_path(n), notice: 'Evaluation was successfully created.'
+    p 'hola'
+    evaluation = Evaluation.create(user_id: params[:other_params][:user_id].to_i,
+                      survey_schema_id:params[:other_params][:survey_id].to_i)
+    p evaluation
+
+    evaluation.answers << answers_array
+
   end
 
   # PATCH/PUT /evaluations/1

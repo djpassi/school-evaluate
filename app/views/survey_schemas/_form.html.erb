@@ -17,6 +17,11 @@
 
         <%= f.input :title,:label => "Título", as: :text, required: true%>
 
+        <%= label_tag 'Ciclo: ' %>
+
+        <%= select_tag(:cycle, options_for_select([["Primero",'1'],["Segundo",'2'],["Tercero",'3']]),{:class=>'form-control',:id=>'select-evaluate'}) %>
+
+
         <div id="table-wrapper">
           <div id="table-scroll">
             <table class="table table-striped table-hover ">

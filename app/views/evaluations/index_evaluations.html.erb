@@ -14,6 +14,7 @@
         <th class="panel-title">#</th>
         <th>Profesor</th>
         <th>Fecha de evaluación</th>
+        <th>Ciclo</th>
         <th>Ver</th>
       </tr>
     </thead>
@@ -25,7 +26,15 @@
         <td> <%= contador %></td>
         <td><%= User.find_by(id:evaluation.user_id).name %></td>
         <td><%= evaluation.created_at %></td>
-        <td> <%= link_to "Mostrar respuestas", show_evaluation_path(evaluation.evaluation_number)%> </td>
+        <%= ciclo = SurveySchema.find(evaluation.survey_schema_id).cycle%>
+        <% if ciclo == '1' %>
+          <td> Primero </td>
+        <% elsif ciclo == '2' %>
+          <td> Segundo </td>
+        <% else %>
+          <td> Tercero </td>
+        <%end%>
+
       </tr>
       <%end%>
     </tbody>
