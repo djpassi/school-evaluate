@@ -8,14 +8,15 @@ class EvaluationsController < ApplicationController
     @surveys = SurveySchema.all
     @evaluations = Array.new
 
-    Evaluation.pluck(:evaluation_number).uniq.each do |x|
-      @evaluations << Evaluation.find_by(evaluation_number:x)
-    end
+    #Evaluation.pluck(:evaluation_number).uniq.each do |x|
+    #  @evaluations << Evaluation.find_by(evaluation_number:x)
+    #end
+
   end
 
   def show_evaluation
     authorize Evaluation
-    @evaluation = Evaluation.where(evaluation_number: params[:id])
+    @evaluation = Evaluation.find(params[:id])
   end
 
   # GET /evaluations
@@ -58,18 +59,20 @@ class EvaluationsController < ApplicationController
     authorize Evaluation
     answers = params[:answers]
     answers_array = Array.new
+
     answers.each do |question_id|
       answers_array << Answer.create(name: params[:names][question_id],
                       genre: params[:genres][question_id],
                       text: params[:answers][question_id])
 
     end
-    p 'hola'
-    evaluation = Evaluation.create(user_id: params[:other_params][:user_id].to_i,
-                      survey_schema_id:params[:other_params][:survey_id].to_i)
+    evaluation = Evaluation.create(user_id:params[:other_params][:user_id].to_i, survey_schema_id:params[:other_params][:survey_id].to_i)
+    evaluation.answers << answers_array
+
+    p "JAHASKJAHSHAJSDHASJDHAJSHDJASHDJASHDJASHDJASHDJASHD"
     p evaluation
 
-    evaluation.answers << answers_array
+    redirect_to show_evaluation_path(evaluation.id), notice: 'Evaluation was successfully created.'
 
   end
 
