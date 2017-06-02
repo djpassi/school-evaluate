@@ -19,8 +19,8 @@ u9 = User.create(name:'admin',email:'admin@uc.cl',password:'123456',password_con
 
 
 #Pautas
-p1 = SurveySchema.create(title:'Pauta Educacion Basica')
-p2 = SurveySchema.create(title:'Pauta Educacion Media')
+p1 = SurveySchema.create(title:'Pauta Educacion Basica',cycle:'1')
+p2 = SurveySchema.create(title:'Pauta Educacion Media',cycle:'2')
 
 #Preguntas
 q1 = Question.create(name:'La planificacion esta organizada en torno a una vision.',genre:'score')
