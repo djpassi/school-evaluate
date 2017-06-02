@@ -8,28 +8,54 @@ class EvaluationsController < ApplicationController
     @surveys = SurveySchema.all
     @evaluations = Array.new
 
-    Evaluation.pluck(:evaluation_number).uniq.each do |x|
-      @evaluations << Evaluation.find_by(evaluation_number:x)
-    end
+    #Evaluation.pluck(:evaluation_number).uniq.each do |x|
+    #  @evaluations << Evaluation.find_by(evaluation_number:x)
+    #end
+
   end
 
   def show_evaluation
     authorize Evaluation
-    @evaluation = Evaluation.where(evaluation_number: params[:id])
+    @evaluation = Evaluation.find(params[:id])
+    #@score = @evaluation.get_score
   end
 
   # GET /evaluations
   # GET /evaluations.json
   def index
     authorize Evaluation
-    @evaluations = Evaluation.all
+
+
+
   end
 
   def index_evaluations
     authorize Evaluation
-    @evaluations = Array.new
-    Evaluation.pluck(:evaluation_number).uniq.each do |x|
-      @evaluations << Evaluation.find_by(evaluation_number:x)
+    p "JKSBDJAKSNDKJASNDJKASD"
+    p params[:sort]
+
+    if params[:sort] == "Profesor"
+      @evaluations = Evaluation.all.sort {
+        |first, second|
+        boolean_value = first.user.name.downcase <=> second.user.name.downcase
+        boolean_value  # <--- this line has been added
+      }
+    elsif params[:sort] == "Fecha"
+      @evaluations =  Evaluation.all.sort{|x| x.created_at}
+    elsif params[:sort] == "Ciclo"
+      @evaluations = Evaluation.all.sort {
+        |first, second|
+        boolean_value = first.survey_schema.cycle <=> second.survey_schema.cycle
+        boolean_value  # <--- this line has been added
+      }
+    elsif params[:sort] == "Pauta"
+      @evaluations = Evaluation.all.sort {
+        |first, second|
+        boolean_value = first.survey_schema.title.downcase <=> second.survey_schema.title.downcase
+        boolean_value  # <--- this line has been added
+      }
+    else
+      @evaluations = Evaluation.all
     end
   end
 
@@ -56,23 +82,20 @@ class EvaluationsController < ApplicationController
   # POST /evaluations.json
   def create
     authorize Evaluation
-    eval = Evaluation.all
-    if eval.count > 0
-      n = Evaluation.last[:evaluation_number]+1
-    else
-      n = 1
-    end
     answers = params[:answers]
+    answers_array = Array.new
+
     answers.each do |question_id|
-      puts question_id + answers[question_id]
-      q = Answer.create(name: params[:names][question_id],
+      answers_array << Answer.create(name: params[:names][question_id],
                       genre: params[:genres][question_id],
                       text: params[:answers][question_id])
-      Evaluation.create(user_id: params[:other_params][:user_id].to_i,
-                        survey_schema_id:params[:other_params][:survey_id].to_i,
-                        answer_id: q.id, evaluation_number:n)
+
     end
-    redirect_to show_evaluation_path(n), notice: 'Evaluation was successfully created.'
+    evaluation = Evaluation.create(user_id:params[:other_params][:user_id].to_i, survey_schema_id:params[:other_params][:survey_id].to_i)
+    evaluation.answers << answers_array
+
+    redirect_to show_evaluation_path(evaluation.id), notice: 'Evaluation was successfully created.'
+
   end
 
   # PATCH/PUT /evaluations/1

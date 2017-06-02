@@ -12,9 +12,10 @@
     <thead>
       <tr class="primary">
         <th class="panel-title">#</th>
-        <th>Profesor</th>
-        <th>Fecha de evaluación</th>
-        <th>Ciclo</th>
+        <th><%= link_to "Profesor", index_evaluations_path(sort:"Profesor") %></th>
+        <th><%= link_to "Pauta", index_evaluations_path(sort:"Pauta") %></th>
+        <th><%= link_to "Fecha de evaluación", index_evaluations_path(sort:"Fecha") %></th>
+        <th><%= link_to "Ciclo", index_evaluations_path(sort:"Ciclo") %></th>
         <th>Ver</th>
       </tr>
     </thead>
@@ -25,8 +26,9 @@
         <% contador +=1 %>
         <td> <%= contador %></td>
         <td><%= User.find_by(id:evaluation.user_id).name %></td>
+        <td><%= SurveySchema.find(evaluation.survey_schema_id).title %></td>
         <td><%= evaluation.created_at %></td>
-        <%= ciclo = SurveySchema.find(evaluation.survey_schema_id).cycle%>
+        <% ciclo = SurveySchema.find(evaluation.survey_schema_id).cycle%>
         <% if ciclo == '1' %>
           <td> Primero </td>
         <% elsif ciclo == '2' %>
@@ -34,7 +36,8 @@
         <% else %>
           <td> Tercero </td>
         <%end%>
-        <td> <%= link_to "Mostrar respuestas", show_evaluation_path(evaluation.evaluation_number)%> </td>
+        <td> <%= link_to "Mostrar respuestas", show_evaluation_path(evaluation.id)%> </td>
+
       </tr>
       <%end%>
     </tbody>
