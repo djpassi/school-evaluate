@@ -1,0 +1,34 @@
+Pedirle a Bastian
+Definir habilidades
+Que nos pase una pauta que especifique las habilidades a las que se correlaciona cada pregunta, no tiene por qué ser extensa.
+Definir sistema de evaluación de habilidades (se harán automáticas según las preguntas o habrán checkboxes para seleccionarlas, etc)
+
+Falta:
+
+Perfil del profesor
+Comentarios*
+Estadísticas de evaluación
+Fields de respuestas (texto, selección)
+Orden de preguntas
+Restringir a quienes se puede evaluar (jefe utp nada que ver por ejemplo)
+Se muestran todas las pautas.
+
+
+Mostrar:
+
+Feedback:
+	- Que el banco de preguntas esté separado por los tipos de preguntas (inicio, desarrollo y cierre [ESTRUCTURA DE CLASE]) (verde, amarillo, rojo)
+	- Que cada pregunta esté asociada a una y solo una habilidad. Las habilidades son fijas; bastián las va a mandar (son del ministerio).
+	- Cambiar nombre a pregunta o enunciado (“escribir pregunta”) al crear una pregunta.
+	- Agregar leyenda o instrucciones de qué es mejor (1 o 5, etc).
+	- Cambiar “texto” a comentario al crear preguntas y poner los circulitos para que se sepa de qué es la pregunta.
+	- Cambiar “tipo de pregunta” por evaluación
+	- Preguntas son de 1 a 5 todas a excepción de un cuadro de comentario al final.
+	- Al agregar preguntas a una pauta que estén separadas por sección y que haya que apretar guardar por cada sección; es decir, como si fueran forms distintos.
+	- Agregar ciclos a las pautas, ( de primero a cuarto básico, de 5to a 8vo y media)
+	- Agregar filtros a las evaluaciones docentes.
+	- Que el profe, pueda ver su evaluación (y solo su evaluación), dependiendo de si el UTF dejó abierto o cerrada la cosa. 
+	- Gráficos. (Pentagrama del Fifa)
+	- Foto de usuario y en que habilidad es experto.
+	- Poder poner al profe: ciclo y si es profe jefe o no (booleanos)
+	- ¿Responsive? —fedeTales
