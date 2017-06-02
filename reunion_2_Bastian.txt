@@ -32,3 +32,7 @@ Feedback:
 	- Foto de usuario y en que habilidad es experto.
 	- Poder poner al profe: ciclo y si es profe jefe o no (booleanos)
 	- ¿Responsive? —fedeTales
+
+
+
+US:
