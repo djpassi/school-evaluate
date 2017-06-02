@@ -1,6 +1,8 @@
 class SurveySchemasController < ApplicationController
   before_action :set_survey_schema, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:index, :new, :edit, :update, :show]
   before_action :confirm_logged_in
+  before_action :def_survey_questions, only: [:show]
 
 
   # GET /survey_schemas
@@ -20,7 +22,24 @@ class SurveySchemasController < ApplicationController
   def new
     authorize SurveySchema
     @survey_schema = SurveySchema.new
-    @questions = Question.all
+    #@questions = Question.all
+    @questions_category = [
+      Question.where(category: 0).sort{
+        |first, second|
+        boolean_value = first.skill.downcase <=> second.skill.downcase
+        boolean_value
+      },
+      Question.where(category: 1).sort{
+        |first, second|
+        boolean_value = first.skill.downcase <=> second.skill.downcase
+        boolean_value
+      },
+      Question.where(category: 2).sort{
+        |first, second|
+        boolean_value = first.skill.downcase <=> second.skill.downcase
+        boolean_value
+      }
+    ]
   end
 
   # GET /survey_schemas/1/edit
@@ -101,6 +120,31 @@ class SurveySchemasController < ApplicationController
       @survey_schema = SurveySchema.find(params[:id])
     end
 
+    def set_categories
+      #@categories = ['INICIO', 'DESARROLLO', 'CIERRE']
+      @categories = {0 => 'INICIO', 1 => 'DESARROLLO', 2 => 'CIERRE'}
+      @skills = ['Liderazgo', 'Comunicación', 'Responsabilidad', 'Autoridad']
+    end
+
+    def def_survey_questions
+    @questions_category = [
+      @survey_schema.questions.where(category: 0).sort{
+        |first, second|
+        boolean_value = first.skill.downcase <=> second.skill.downcase
+        boolean_value
+      },
+      @survey_schema.questions.where(category: 1).sort{
+        |first, second|
+        boolean_value = first.skill.downcase <=> second.skill.downcase
+        boolean_value
+      },
+      @survey_schema.questions.where(category: 2).sort{
+        |first, second|
+        boolean_value = first.skill.downcase <=> second.skill.downcase
+        boolean_value
+      }
+    ]
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_schema_params
       params.require(:survey_schema).permit(:title,:cycle)

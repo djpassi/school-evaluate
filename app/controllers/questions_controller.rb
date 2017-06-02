@@ -9,7 +9,23 @@ class QuestionsController < ApplicationController
   def index
     authorize Question
     #@questions = Question.all
-    @questions_category = [Question.where(category: 0), Question.where(category: 1), Question.where(category: 2)]
+    @questions_category = [
+      Question.where(category: 0).sort{
+        |first, second|
+        boolean_value = first.skill.downcase <=> second.skill.downcase
+        boolean_value
+      },
+      Question.where(category: 1).sort{
+        |first, second|
+        boolean_value = first.skill.downcase <=> second.skill.downcase
+        boolean_value
+      },
+      Question.where(category: 2).sort{
+        |first, second|
+        boolean_value = first.skill.downcase <=> second.skill.downcase
+        boolean_value
+      }
+    ]
   end
 
   # GET /questions/1

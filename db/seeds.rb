@@ -9,7 +9,7 @@
 #Usuarios
 u1 = User.create(name:'Diego Passi',email:'djpassi@uc.cl',password:'123456',password_confirmation:'123456')
 u2 = User.create(name:'David Galemiri',email:'dagalemiri@uc.cl',password:'123456',password_confirmation:'123456')
-u3 = User.create(name:'Juan Marquez',email:'jgmarquez@uc.cl',password:'123456',password_confirmation:'123456')
+u3 = User.create(name:'Juan Marquez',email:'jgmarquez@uc.cl',password:'123123',password_confirmation:'123123', role: :vip)
 u4 = User.create(name:'Felipe De La Fuente',email:'fadelafuente1@uc.cl',password:'123456',password_confirmation:'123456')
 u5 = User.create(name:'Director',email:'director@uc.cl',password:'123456',password_confirmation:'123456',role: :vip)
 u6 = User.create(name:'Jefe UTP',email:'utp@uc.cl',password:'123456',password_confirmation:'123456')

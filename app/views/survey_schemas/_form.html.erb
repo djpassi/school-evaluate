@@ -14,45 +14,44 @@
           </ul>
         </div>
       <% end %>
-
-        <%= f.input :title,:label => "Título", as: :text, required: true%>
+        <div class="schemaTitleWrapper">
+        <%= f.input :title,:label => "Título", as: :text, required: true %>
 
         <%= label_tag 'Ciclo: ' %>
 
         <%= select_tag(:cycle, options_for_select([["Primero",'1'],["Segundo",'2'],["Tercero",'3']]),{:class=>'form-control',:id=>'select-evaluate'}) %>
 
+        </div>
 
         <div id="table-wrapper">
-          <div id="table-scroll">
             <table class="table table-striped table-hover ">
+            <% contador = 0%>
+            <% for i in 0..@categories.length-1 %> 
+              <thead class="categoryTitle <%="cat#{i}"%>">
+                <td colspan="6"><%=@categories[i]%></td>
+              </thead>
               <thead>
                 <tr class="primary">
                   <th class="panel-title">#</th>
-                  <th>Nombre de pregunta</th>
-                  <th>Tipo de pregunta</th>
-                  <th></th>
+                  <th>Pregunta</th>
+                  <th>habilidad</th>
+                  <th>Agregar pregunta</th>
                 </tr>
               </thead>
               <tbody>
-                <% contador = 0%>
-                <% @questions.each do |question|%>
+                <% @questions_category[i].each do |question|%>
                 <tr>
                   <% contador +=1 %>
                   <td> <%= contador %></td>
-                  <td><%= question.name%></td>
-                  <% if question.genre=='score'%>
-                  <td>Puntuación</td>
-                  <% else %>
-                  <td>Texto</td>
-                  <%end%>
+                  <td><%= question.name %></td>
+                  <td><%= question.skill %></td>
                   <div class="btn-group btn-group-justified">
-                  <td> <p> Agregar pregunta </p> </td>
-                  <td> <%= check_box_tag "questions[]", question.id %> </td>
+                  <td><center> <%= check_box_tag "questions[]", question.id %> </center></td>
                 </tr>
                 <%end%>
               </tbody>
+              <%end%>
             </table>
-          </div>
         </div>
 
         <div class="btn-group btn-group-justified">
