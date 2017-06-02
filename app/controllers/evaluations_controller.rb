@@ -17,6 +17,7 @@ class EvaluationsController < ApplicationController
   def show_evaluation
     authorize Evaluation
     @evaluation = Evaluation.find(params[:id])
+    #@score = @evaluation.get_score
   end
 
   # GET /evaluations
