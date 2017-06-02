@@ -71,7 +71,6 @@ class EvaluationsController < ApplicationController
 
     evaluation.answers << answers_array
 
-    redirect_to show_evaluation_path(evaluation.id), notice: 'Evaluation was successfully created.'
   end
 
   # PATCH/PUT /evaluations/1
