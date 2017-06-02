@@ -23,16 +23,19 @@ p1 = SurveySchema.create(title:'Pauta Educacion Basica')
 p2 = SurveySchema.create(title:'Pauta Educacion Media')
 
 #Preguntas
-q1 = Question.create(name:'La planificacion esta organizada en torno a una vision.',genre:'score')
-q2 = Question.create(name:'Presenta objetivos que apuntan al desarrollo de aprendizajes en torno a un  tema.',genre:'score')
-q3 = Question.create(name:'La planificación expresa aquellas preguntas, relaciones o conceptos que son claves para la comprensión del tema.
-',genre:'score')
-q4 = Question.create(name:'Presenta objetivos que apuntan al desarrollo de habilidades académicas.
-',genre:'score')
-q5 = Question.create(name:'Presenta objetivos que apuntan al desarrollo de habilidades socioemocionales.
-',genre:'score')
-q6 = Question.create(name:'Tiene una fundamentación que contextualiza los objetivos de aprendizaje con la Visión.
-',genre:'score')
-q7 = Question.create(name:'La secuencia de acciones está orientada al logro de los aprendizajes propuestos.
-',genre:'score')
-q8 = Question.create(name:'Comentarios extras',genre:'text')
+q1 = Question.create(name:'La planificacion esta organizada en torno a una vision.',
+	genre:'score', category: 0, skill: 'Liderazgo')
+q2 = Question.create(name:'Presenta objetivos que apuntan al desarrollo de aprendizajes en torno a un  tema.',
+	genre:'score', category: 0, skill: 'Comunicación')
+q3 = Question.create(name:'La planificación expresa preguntas, relaciones o conceptos que son claves para la comprensión del tema.',
+	genre:'score', category: 0, skill: 'Responsabilidad')
+q4 = Question.create(name:'Presenta objetivos que apuntan al desarrollo de habilidades académicas.',
+	genre:'score', category: 1, skill: 'Autoridad')
+q5 = Question.create(name:'Presenta objetivos que apuntan al desarrollo de habilidades socioemocionales.',
+	genre:'score', category: 1, skill: 'Responsabilidad')
+q6 = Question.create(name:'Tiene una fundamentación que contextualiza los objetivos de aprendizaje con la Visión.',
+	genre:'score', category: 2, skill: 'Liderazgo')
+q7 = Question.create(name:'La secuencia de acciones está orientada al logro de los aprendizajes propuestos.',
+	genre:'score', category: 2, skill: 'Comunicación')
+q8 = Question.create(name:'Comentarios extras',
+	genre:'text', category: 2, skill: 'General')
