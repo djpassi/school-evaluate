@@ -44,7 +44,6 @@
         <td> <%= contador %></td>
         <td><%= User.find_by(id:evaluation.user_id).name %></td>
         <td><%= evaluation.created_at %></td>
-        <td> <%= link_to "Mostrar respuestas", show_evaluation_path(evaluation.evaluation_number)%> </td>
       </tr>
       <%end%>
     </tbody>
