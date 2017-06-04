@@ -52,7 +52,12 @@
     </thead>
     <tbody>
       <tr colspan="1">
-        <td colspan="1"><input type="text" name="answers[<%=@text[0].id%>]"  /> </td>
+        <!-- <td colspan="1"><input type="text" name="answers[<%=@text[0].id%>]"  /> </td> -->
+        <td><textarea rows="4" cols="120" form="eval_form" name="answers[<%=@text[0].id%>]"></textarea>
+        <input type="hidden" name="genres[<%=@text[0].id%>]" value="<%=@text[0].genre%>" />
+        <input type="hidden" name="names[<%=@text[0].id%>]" value="<%=@text[0].name%>" />
+        <input type="hidden" name="skills[<%=@text[0].id%>]" value="<%=@text[0].skill%>" />
+        <input type="hidden" name="categories[<%=@text[0].id%>]" value="<%=@text[0].category%>"/>
       </tr>
     </tbody>
 

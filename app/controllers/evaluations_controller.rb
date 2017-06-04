@@ -20,6 +20,7 @@ class EvaluationsController < ApplicationController
     @evaluation = Evaluation.find(params[:id])
     @scores = @evaluation.get_score
     @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
+    @text = @evaluation.answers.where(name: "Comentarios extras")
     #@score = @evaluation.get_score
   end
   def show_stadistics
@@ -71,6 +72,7 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/1.json
   def show
     authorize Evaluation
+
   end
 
   # GET /evaluations/new
