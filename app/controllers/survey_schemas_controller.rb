@@ -45,9 +45,12 @@ class SurveySchemasController < ApplicationController
     @survey_schema = SurveySchema.new(survey_schema_params)
     @survey_schema.cycle = params[:cycle]
     @questions = Question.where(id: params[:questions])
-
-
+    @texto = Question.where(name: "Comentarios extras")
+    puts(@texto)
+    puts(@texto.name)
     @survey_schema.questions << @questions
+    @survey_schema.questions << @texto
+
 
     p @survey_schema.questions
 
