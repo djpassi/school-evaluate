@@ -22,20 +22,21 @@
         <%= select_tag(:cycle, options_for_select([["Primero",'1'],["Segundo",'2'],["Tercero",'3']]),{:class=>'form-control',:id=>'select-evaluate'}) %>
 
 
-        <div id="table-wrapper">
-          <div id="table-scroll">
-            <table class="table table-striped table-hover ">
-              <thead>
-                <tr class="primary">
-                  <th class="panel-title">#</th>
-                  <th>Nombre de pregunta</th>
-                  <th>Tipo de pregunta</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% contador = 0%>
-                <% @questions.each do |question|%>
+
+
+        <table class="table table-striped table-hover ">
+          <thead>
+            <tr class="primary">
+              <th class="panel-title">#</th>
+              <th>Nombre de pregunta</th>
+              <th>Tipo de pregunta</th>
+              <th>Agregar pregunta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% contador = 0%>
+            <% @questions.each do |question|%>
+              <%if question.genre =="score"%>
                 <tr>
                   <% contador +=1 %>
                   <td> <%= contador %></td>
@@ -46,14 +47,13 @@
                   <td>Texto</td>
                   <%end%>
                   <div class="btn-group btn-group-justified">
-                  <td> <p> Agregar pregunta </p> </td>
                   <td> <%= check_box_tag "questions[]", question.id %> </td>
                 </tr>
-                <%end%>
-              </tbody>
-            </table>
-          </div>
-        </div>
+              <%end%>
+            <%end%>
+          </tbody>
+        </table>
+
 
         <div class="btn-group btn-group-justified">
         <p><a href="/survey_schemas" class="btn btn-primary btn-sm">Cancelar</a>

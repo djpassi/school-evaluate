@@ -6,7 +6,7 @@
 <div class="index">
   <table class="table table-striped table-hover ">
   <% contador = 0%>
-  <% for i in 0..@categories.length-1 %> 
+  <% for i in 0..@categories.length-1 %>
     <thead class="categoryTitle <%="cat#{i}"%>">
       <td colspan="6"><%=@categories[i]%></td>
     </thead>
@@ -22,19 +22,21 @@
     </thead>
     <tbody>
       <% @questions_category[i].each do |question|%>
-      <tr>
-        <% contador +=1 %>
-        <td> <%= contador %></td>
-        <td><%= question.name%></td>
-        <%if question.genre == "text" %>
-          <td><input type="text" disabled class="scaleWrap"> </td>
-        <%else%>
-          <td><%= render 'likert_scale_clean' %></td>
-        <% end %>
-        <td> <%= question.skill %></td>
-        <td><%= link_to 'Editar', edit_question_path(question) %> </td>
-        <td> <%= link_to 'Eliminar', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%if question.genre == "score"%>
+          <tr>
+            <% contador +=1 %>
+            <td> <%= contador %></td>
+            <td><%= question.name%></td>
+            <%if question.genre == "text" %>
+              <td><input type="text" disabled class="scaleWrap"> </td>
+            <%else%>
+              <td><%= render 'likert_scale_clean' %></td>
+            <% end %>
+            <td> <%= question.skill %></td>
+            <td><%= link_to 'Editar', edit_question_path(question) %> </td>
+            <td> <%= link_to 'Eliminar', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <%end%>
       <%end%>
     </tbody>
     <%end%>

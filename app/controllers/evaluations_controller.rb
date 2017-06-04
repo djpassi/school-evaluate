@@ -1,6 +1,7 @@
 class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
   before_action :confirm_logged_in
+  before_action :set_categories, only: [:index, :show_evaluation, :show_stadistics, :new, :edit, :update]
   skip_before_filter :verify_authenticity_token
 
   def evaluate
@@ -17,7 +18,14 @@ class EvaluationsController < ApplicationController
   def show_evaluation
     authorize Evaluation
     @evaluation = Evaluation.find(params[:id])
+    @scores = @evaluation.get_score
+    @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
     #@score = @evaluation.get_score
+  end
+  def show_stadistics
+    @evaluation = Evaluation.find(params[:id])
+    @scores = @evaluation.get_score
+    @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
   end
 
   # GET /evaluations
@@ -71,6 +79,9 @@ class EvaluationsController < ApplicationController
     @evaluation = Evaluation.new
     @survey = SurveySchema.find(params[:survey_id])
     @user_id = params[:user_id]
+    @text = @survey.questions.where(name: "Comentarios extras")
+    @question_category = [@survey.questions.where(category: 0), @survey.questions.where(category: 1), @survey.questions.where(category: 2)]
+
   end
 
   # GET /evaluations/1/edit
@@ -88,7 +99,9 @@ class EvaluationsController < ApplicationController
     answers.each do |question_id|
       answers_array << Answer.create(name: params[:names][question_id],
                       genre: params[:genres][question_id],
-                      text: params[:answers][question_id])
+                      text: params[:answers][question_id],
+                      skill: params[:skills][question_id],
+                      category: params[:categories][question_id])
 
     end
     evaluation = Evaluation.create(user_id:params[:other_params][:user_id].to_i, survey_schema_id:params[:other_params][:survey_id].to_i)
@@ -126,6 +139,11 @@ class EvaluationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_evaluation
       @evaluation = Evaluation.find(params[:id])
+    end
+    def set_categories
+      #@categories = ['INICIO', 'DESARROLLO', 'CIERRE']
+      @categories = {0 => 'INICIO', 1 => 'DESARROLLO', 2 => 'CIERRE'}
+      @skills = ['Liderazgo', 'Comunicación', 'Responsabilidad', 'Autoridad']
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

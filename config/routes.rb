@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	get '/home', to: 'home#index', as: 'index'
   get '/evaluate', to:'evaluations#evaluate'
 	get "show_evaluation/:id", to:'evaluations#show_evaluation', as: 'show_evaluation'
+  get "show_stadistics/:id", to:'evaluations#show_stadistics', as: 'show_stadistics'
 	get "index_evaluations", to:'evaluations#index_evaluations', as: 'index_evaluations'
   put 'users/:id/change_role' => "users#change_role", as: 'change_role'
 

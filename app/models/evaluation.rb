@@ -4,9 +4,12 @@ class Evaluation < ApplicationRecord
   belongs_to :survey_schema
 
   def get_score
-    return 1
     @liderazgo = get_average("Liderazgo")
-    return @liderazgo
+    @comunicacion = get_average("Comunicación")
+    @responsabilidad= get_average("Responsabilidad")
+    @autoridad = get_average("Autoridad")
+    @respuesta = [@autoridad,@comunicacion,@liderazgo,@responsabilidad]
+    return @respuesta
   end
 
 
@@ -15,7 +18,7 @@ class Evaluation < ApplicationRecord
     count = 0
     self.answers.each do |answer|
       if (answer.skill == type)
-        sum += answer.score
+        sum += Integer(answer.text).to_f
         count +=1
       end
     end
@@ -23,6 +26,7 @@ class Evaluation < ApplicationRecord
     if (count == 0)
       return 0
     end
+    respuesta = sum/count
     return sum/count
   end
 end
