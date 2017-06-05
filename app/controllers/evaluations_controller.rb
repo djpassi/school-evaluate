@@ -26,7 +26,10 @@ class EvaluationsController < ApplicationController
   def show_stadistics
     @evaluation = Evaluation.find(params[:id])
     @scores = @evaluation.get_score
+    p 'hola'
+    p @scores
     @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
+    p @question_category
   end
 
   # GET /evaluations

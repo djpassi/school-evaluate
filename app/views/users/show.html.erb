@@ -26,11 +26,22 @@
                 </div>
               </div>
             </div>
-                 <div class="panel-footer">
-                      <h4><span class="label label-primary">Proactivo</span></h4>
-                      <h4><span class="label label-success">Inicio de Clases</span></h4>
-                      <h4><span class="label label-info">Bueno pa la talla</span></h4>
-                  </div>
+                <div class="panel-footer">
+                  <% if @final_skills%>
+
+
+                     <h1><span class="label label-primary"><%=  @final_skills[0][0]%></span></h1>
+                     <h1><span class="label label-success"><%=  @final_skills[1][0]%></span></h1>
+
+
+
+                 <%else%>
+                 <h4>No se presentan evaluaciones actualmente para el profesor.</h4>
+
+                  <%end%>
+
+                 </div>
+
         </div>
       </div>
     </div>
