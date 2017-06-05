@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 	get "index_evaluations", to:'evaluations#index_evaluations', as: 'index_evaluations'
   put 'users/:id/change_role' => "users#change_role", as: 'change_role'
 
+  get "chart_example", to:'evaluations#chart_example', as: 'chart_example'
+
   get "users/:id", to:'users#show', as: 'users_show'
   get "users/", to:'users#index', as: 'users_index'
 

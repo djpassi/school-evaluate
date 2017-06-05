@@ -27,6 +27,13 @@ class EvaluationsController < ApplicationController
     @evaluation = Evaluation.find(params[:id])
     @scores = @evaluation.get_score
     @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
+    @barraline = Evaluation.last.get_google_chart_line
+    
+
+  end
+  def chart_example
+    @barra = Evaluation.last.get_google_chart
+    @barraline = Evaluation.last.get_google_chart_line
   end
 
   # GET /evaluations
