@@ -23,12 +23,15 @@
 		 <div>Cambiar Rol usuario</div>
 	</a>
 
-	<%end%>
-
-
+	<%else %>
 	<div class="projects-index">
 	  <%= render partial: '/users/user', :object =>{:users => User.where(role:'user').shuffle.last(7)} %>
 	</div>
+
+	<%end%>
+
+
+
 
 
 </div>
