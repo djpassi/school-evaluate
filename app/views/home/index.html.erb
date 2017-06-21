@@ -25,4 +25,10 @@
 
 	<%end%>
 
+
+	<div class="projects-index">
+	  <%= render partial: '/users/user', :object =>{:users => User.where(role:'user').shuffle.last(7)} %>
+	</div>
+
+
 </div>
