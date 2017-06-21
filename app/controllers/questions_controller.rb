@@ -32,6 +32,7 @@ class QuestionsController < ApplicationController
   def create
     authorize Question
     @question = Question.new(question_params)
+    @question.genre = "score"
 
     respond_to do |format|
       if @question.save

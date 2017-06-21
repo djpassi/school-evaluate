@@ -29,10 +29,14 @@ class EvaluationsController < ApplicationController
     p 'hola'
     p @scores
     @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
+    # @same_evaluations = @evaluation.get_same_evaluations
+    # @prueba1 = @same_evaluations[1].answers[0].name
+    # puts("ACA VIENE LA HORA DE LA VERDAD")
+    # puts(@prueba1)
 
- 
-    @barraline = Evaluation.last.get_google_chart_line
-    
+
+    @barraline = @evaluation.get_google_chart_line
+
 
   end
   def chart_example
