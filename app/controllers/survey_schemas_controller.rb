@@ -8,7 +8,26 @@ class SurveySchemasController < ApplicationController
   # GET /survey_schemas.json
   def index
     authorize SurveySchema
-    @survey_schemas = SurveySchema.all
+
+    p params[:sort]
+
+    if params[:sort] == "Titulo"
+      @survey_schemas = SurveySchema.all.sort {
+        |first, second|
+        boolean_value = first.title.downcase <=> second.title.downcase
+        boolean_value  
+      }
+    elsif params[:sort] == "Ciclo"
+      @survey_schemas = SurveySchema.all.sort {
+        |first, second|
+        boolean_value = first.cycle <=> second.cycle
+        boolean_value
+      }
+    else
+      @survey_schemas = SurveySchema.all
+    end
+
+    
   end
 
   # GET /survey_schemas/1

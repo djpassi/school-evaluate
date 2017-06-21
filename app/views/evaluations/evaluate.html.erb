@@ -14,10 +14,9 @@
 
 <%= select_tag(:user_id, options_for_select(User.all.collect{ |u| [u.name, u.id] }),{:class=>'form-control',:id=>'select-evaluate'}) %>
 
-
 </br>
 
-  <%= submit_tag("Comenzar evaluación", :class=>'btn btn-primary btn-lg') %>
+<%= submit_tag("Comenzar evaluación", :class=>'btn btn-primary btn-lg') %>
 
 
 <% end %>
