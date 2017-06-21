@@ -29,7 +29,7 @@
         <td><%= User.find_by(id:evaluation.user_id).name %></td>
         <td><%= SurveySchema.find(evaluation.survey_schema_id).title %></td>
         <td><%= evaluation.created_at.hour %>:<%= evaluation.created_at.min%>  <%= evaluation.created_at.day %>/<%= evaluation.created_at.month %>/<%= evaluation.created_at.year%> </td>
-        <% ciclo = SurveySchema.find(evaluation.survey_schema_id).cycle%>
+        <% ciclo = SurveySchema.find_by(id:evaluation.survey_schema_id).cycle%>
         <% if ciclo == '1' %>
           <td> Primero </td>
         <% elsif ciclo == '2' %>
