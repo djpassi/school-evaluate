@@ -20,18 +20,18 @@ Feedback:
 	- Que el banco de preguntas esté separado por los tipos de preguntas (inicio, desarrollo y cierre [ESTRUCTURA DE CLASE]) (verde, amarillo, rojo)
 	- Que cada pregunta esté asociada a una y solo una habilidad. Las habilidades son fijas; bastián las va a mandar (son del ministerio).
 	- Cambiar nombre a pregunta o enunciado (“escribir pregunta”) al crear una pregunta.
-	- Agregar leyenda o instrucciones de qué es mejor (1 o 5, etc).
+	- Agregar leyenda o instrucciones de qué es mejor (1 o 5, etc). (FALTA ESTO)
 	- Cambiar “texto” a comentario al crear preguntas y poner los circulitos para que se sepa de qué es la pregunta.
-	- Cambiar “tipo de pregunta” por evaluación
+	- Cambiar “tipo de pregunta” por evaluación (HAY QUE ELIMINAR LA WEA AL CREAR )
 	- Preguntas son de 1 a 5 todas a excepción de un cuadro de comentario al final.
 	- Al agregar preguntas a una pauta que estén separadas por sección y que haya que apretar guardar por cada sección; es decir, como si fueran forms distintos.
 	- Agregar ciclos a las pautas, ( de primero a cuarto básico, de 5to a 8vo y media)
-	- Agregar filtros a las evaluaciones docentes.
+	- Agregar filtros a las evaluaciones docentes. (FALTA ORDENAR PAUTAS DE EVALUACIONES )(DAVID)
 	- Que el profe, pueda ver su evaluación (y solo su evaluación), dependiendo de si el UTF dejó abierto o cerrada la cosa. 
-	- Gráficos. (Pentagrama del Fifa)
+	- Gráficos. (Pentagrama del Fifa) 
 	- Foto de usuario y en que habilidad es experto.
-	- Poder poner al profe: ciclo y si es profe jefe o no (booleanos)
-	- ¿Responsive? —fedeTales
+	- Poder poner al profe: ciclo y si es profe jefe o no (booleanos) (FALTA)
+	- ¿Responsive? —fedeTales 
 
 
 

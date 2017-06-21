@@ -34,6 +34,7 @@ class QuestionsController < ApplicationController
   def create
     authorize Question
     @question = Question.new(question_params)
+    @question.genre = "score"
 
     @question.genre = "score"
 
