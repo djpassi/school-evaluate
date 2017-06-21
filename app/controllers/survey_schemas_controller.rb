@@ -29,7 +29,6 @@ class SurveySchemasController < ApplicationController
   # GET /survey_schemas/1/edit
   def edit
     authorize SurveySchema
-    #@survey_schema = SurveySchema.find_by(id: params[:id])
 
     @questions_category = [Question.where(category: 0), Question.where(category: 1), Question.where(category: 2)]
     @questions_schema = [@survey_schema.questions.where(category: 0), @survey_schema.questions.where(category: 1), @survey_schema.questions.where(category: 2)]

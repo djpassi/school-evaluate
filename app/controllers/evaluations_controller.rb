@@ -45,10 +45,8 @@ class EvaluationsController < ApplicationController
   # GET /evaluations.json
   def index
     authorize Evaluation
-
-
-
   end
+
 
   def index_evaluations
     authorize Evaluation
@@ -94,6 +92,8 @@ class EvaluationsController < ApplicationController
     @survey = SurveySchema.find(params[:survey_id])
     @user_id = params[:user_id]
     @text = @survey.questions.where(name: "Comentarios extras")
+
+    
     @question_category = [@survey.questions.where(category: 0), @survey.questions.where(category: 1), @survey.questions.where(category: 2)]
 
   end
@@ -101,6 +101,9 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/1/edit
   def edit
     authorize Evaluation
+    @scores = @evaluation.get_score
+    @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
+    @text = @evaluation.answers.where(name: "Comentarios extras")
   end
 
   # POST /evaluations
