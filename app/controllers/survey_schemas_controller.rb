@@ -1,6 +1,7 @@
 class SurveySchemasController < ApplicationController
   before_action :set_survey_schema, only: [:show, :edit, :update, :destroy]
   before_action :confirm_logged_in
+  before_action :set_categories, only: [:index, :new, :edit, :update, :show]
 
 
   # GET /survey_schemas
@@ -14,32 +15,37 @@ class SurveySchemasController < ApplicationController
   # GET /survey_schemas/1.json
   def show
     authorize SurveySchema
+    @questions_category = [@survey_schema.questions.where(category: 0), @survey_schema.questions.where(category: 1), @survey_schema.questions.where(category: 2)]
   end
 
   # GET /survey_schemas/new
   def new
     authorize SurveySchema
     @survey_schema = SurveySchema.new
-    @questions = Question.all
+    #@questions = Question.all
+    @questions_category = [Question.where(category: 0), Question.where(category: 1), Question.where(category: 2)]
   end
 
   # GET /survey_schemas/1/edit
   def edit
     authorize SurveySchema
-    @survey_schema = SurveySchema.find_by(id: params[:id])
+    #@survey_schema = SurveySchema.find_by(id: params[:id])
 
-    @all_questions_id = Question.pluck(:id)
-    @questions_id = @survey_schema.questions.pluck(:id)
-    @other_questions_id = @all_questions_id - @questions_id
+    @questions_category = [Question.where(category: 0), Question.where(category: 1), Question.where(category: 2)]
+    @questions_schema = [@survey_schema.questions.where(category: 0), @survey_schema.questions.where(category: 1), @survey_schema.questions.where(category: 2)]
 
-    @other_questions = Question.where(id:@other_questions_id)
+    @questions_id = Array.new
+
+    @questions_schema.each do |x|
+      @questions_id.concat(x.pluck(:id))
+    end
+
   end
 
   # POST /survey_schemas
   # POST /survey_schemas.json
   def create
     authorize SurveySchema
-    p "szdkjfbndksjfñadjsnfajsdnfjkadsnfajksndfajsd"
     p survey_schema_params
 
     @survey_schema = SurveySchema.new(survey_schema_params)
@@ -69,9 +75,9 @@ class SurveySchemasController < ApplicationController
   # PATCH/PUT /survey_schemas/1.json
   def update
     authorize SurveySchema
-    @survey_schema.questions.delete(Question.where(id:params[:delete_questions]))
+    @survey_schema.questions.delete_all
 
-    @add_questions = Question.where(id: params[:add_questions])
+    @add_questions = Question.where(id: params[:questions])
 
     @survey_schema.questions << @add_questions
 
@@ -102,6 +108,12 @@ class SurveySchemasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_survey_schema
       @survey_schema = SurveySchema.find(params[:id])
+    end
+
+    def set_categories
+      #@categories = ['INICIO', 'DESARROLLO', 'CIERRE']
+      @categories = {0 => 'INICIO', 1 => 'DESARROLLO', 2 => 'CIERRE'}
+      @skills = ['Liderazgo', 'Comunicación', 'Responsabilidad', 'Autoridad']
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
