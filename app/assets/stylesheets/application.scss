@@ -29,6 +29,49 @@
  }
 
 
+ .contact-button{
+   position: relative;
+   float: right;
+   margin-right: 30px;
+ }
+
+ .projects-index{
+   text-align: center;
+ }
+
+ .project-square{
+   background: white;
+   text-align: center;
+   color: inherit;
+   text-decoration: none;
+   border-radius: 30px 30px 30px 5px;
+   display: inline-block;
+   margin: 1rem;
+   position: relative;
+   width: 145px;
+   height: 165px;
+   overflow: scroll;
+   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+ }
+
+ .project-square:hover {
+   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+ }
+
+ .project-square img{
+     display: inline-block;
+     width: 65%;
+     height: 65%;
+     margin: auto;
+     margin-top: 5px;
+   }
+
+ #project-name{
+   width: 90%;
+   padding: 0px;
+   margin: 10px;
+ }
+
 
 
  .table-user-information > tbody > tr {
@@ -127,9 +170,14 @@
     background: -o-linear-gradient(#4f86b7, #b3dafe); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#4f86b7, #b3dafe); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#4f86b7, #b3dafe); /* Standard syntax */
-		height: 100%;
 		position: absolute;
-		width: 100%;
+    height: auto !important;
+    width: auto !important;
+    min-height: 100%;
+    min-width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -188,39 +236,36 @@
 }
 
 .action .teacher {
-	background: url("/images/teacher.png");
+	background: url("/images/test.png");
 	background-size: cover;
 	width: 80%;
 	height: 100%;
-	margin-left: 10%;
 }
 
 .action div {
 	height: 4em;
 	line-height: 4em;
-	color: #2f2f2f;
+	color: white;
 	font-size: 18pt;
+  margin: auto;
+
 }
 
 .action .question{
-	background: url("/images/question.png");
+	background: url("/images/question2.png");
 	background-size: cover;
-	width: 80%;
 	height: 100%;
-	margin-left: 10%;
 }
 
 .action .form{
-	background: url("/images/form.png");
+	background: url("/images/folder.png");
 	background-size: cover;
 	width: 80%;
 	height: 100%;
-	margin-left: 10%;
 }
 .action .new_user{
 	background: url("/images/new-user.png");
 	background-size: cover;
-	width: 80%;
 	height: 100%;
 	margin-left: 10%;
 }
