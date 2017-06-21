@@ -9,10 +9,6 @@ class EvaluationsController < ApplicationController
     @surveys = SurveySchema.all
     @evaluations = Array.new
 
-    #Evaluation.pluck(:evaluation_number).uniq.each do |x|
-    #  @evaluations << Evaluation.find_by(evaluation_number:x)
-    #end
-
   end
 
   def show_evaluation
@@ -37,37 +33,60 @@ class EvaluationsController < ApplicationController
   def index
     authorize Evaluation
 
-
-
   end
 
   def index_evaluations
     authorize Evaluation
-    p "JKSBDJAKSNDKJASNDJKASD"
-    p params[:sort]
-
+    evaluations = Evaluation.all
     if params[:sort] == "Profesor"
-      @evaluations = Evaluation.all.sort {
+      @evaluations = evaluations.sort {
         |first, second|
         boolean_value = first.user.name.downcase <=> second.user.name.downcase
         boolean_value  # <--- this line has been added
       }
     elsif params[:sort] == "Fecha"
-      @evaluations =  Evaluation.all.sort{|x| x.created_at}
+      @evaluations =  evaluations.sort{|x| x.created_at}
     elsif params[:sort] == "Ciclo"
-      @evaluations = Evaluation.all.sort {
+      @evaluations = evaluations.sort {
         |first, second|
         boolean_value = first.survey_schema.cycle <=> second.survey_schema.cycle
         boolean_value  # <--- this line has been added
       }
     elsif params[:sort] == "Pauta"
-      @evaluations = Evaluation.all.sort {
+      @evaluations = evaluations.sort {
         |first, second|
         boolean_value = first.survey_schema.title.downcase <=> second.survey_schema.title.downcase
         boolean_value  # <--- this line has been added
       }
     else
-      @evaluations = Evaluation.all
+      @evaluations = evaluations
+    end
+  end
+
+  def user_evaluations
+    evaluations = Evaluation.where(user_id:current_user.id)
+    if params[:sort] == "Profesor"
+      @evaluations = evaluations.sort {
+        |first, second|
+        boolean_value = first.user.name.downcase <=> second.user.name.downcase
+        boolean_value  # <--- this line has been added
+      }
+    elsif params[:sort] == "Fecha"
+      @evaluations =  evaluations.sort{|x| x.created_at}
+    elsif params[:sort] == "Ciclo"
+      @evaluations = evaluations.sort {
+        |first, second|
+        boolean_value = first.survey_schema.cycle <=> second.survey_schema.cycle
+        boolean_value  # <--- this line has been added
+      }
+    elsif params[:sort] == "Pauta"
+      @evaluations = evaluations.sort {
+        |first, second|
+        boolean_value = first.survey_schema.title.downcase <=> second.survey_schema.title.downcase
+        boolean_value  # <--- this line has been added
+      }
+    else
+      @evaluations = evaluations
     end
   end
 

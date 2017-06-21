@@ -1,0 +1,11 @@
+<% user[:users].each do |user| %>
+<a href="/users/<%=user.id%>" class="project-square">
+  <%if not user.image? %>
+     <img class='img-circle img-responsive' src="/images/placeholder-user.png" >
+  <% else %>
+    <img class='img-circle img-responsive' src="<%= user.image %>" >
+  <% end %>
+<h5 id="project-name"> <%= user.name %></h5>
+
+</a>
+<% end %>
