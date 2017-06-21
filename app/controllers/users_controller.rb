@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
 
   def index;
-      @users = User.all
+      @users = User.where(role:'user')
   end
   def show;
       @user = User.find(params[:id])

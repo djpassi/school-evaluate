@@ -52,14 +52,11 @@ class EvaluationsController < ApplicationController
   # GET /evaluations.json
   def index
     authorize Evaluation
-
-
-
   end
+
 
   def index_evaluations
     authorize Evaluation
-    p "JKSBDJAKSNDKJASNDJKASD"
     p params[:sort]
 
     if params[:sort] == "Profesor"
@@ -87,6 +84,34 @@ class EvaluationsController < ApplicationController
     end
   end
 
+
+  def user_evaluations
+      evaluations = Evaluation.where(user_id:current_user.id)
+      if params[:sort] == "Profesor"
+        @evaluations = evaluations.sort {
+          |first, second|
+          boolean_value = first.user.name.downcase <=> second.user.name.downcase
+          boolean_value  
+        }
+      elsif params[:sort] == "Fecha"
+        @evaluations =  evaluations.sort{|x| x.created_at}
+      elsif params[:sort] == "Ciclo"
+        @evaluations = evaluations.sort {
+          |first, second|
+          boolean_value = first.survey_schema.cycle <=> second.survey_schema.cycle
+          boolean_value
+        }
+      elsif params[:sort] == "Pauta"
+        @evaluations = evaluations.sort {
+          |first, second|
+          boolean_value = first.survey_schema.title.downcase <=> second.survey_schema.title.downcase
+          boolean_value
+        }
+      else
+        @evaluations = evaluations
+      end
+  end
+
   # GET /evaluations/1
   # GET /evaluations/1.json
   def show
@@ -101,6 +126,8 @@ class EvaluationsController < ApplicationController
     @survey = SurveySchema.find(params[:survey_id])
     @user_id = params[:user_id]
     @text = @survey.questions.where(name: "Comentarios extras")
+
+    
     @question_category = [@survey.questions.where(category: 0), @survey.questions.where(category: 1), @survey.questions.where(category: 2)]
 
   end
@@ -108,6 +135,9 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/1/edit
   def edit
     authorize Evaluation
+    @scores = @evaluation.get_score
+    @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
+    @text = @evaluation.answers.where(name: "Comentarios extras")
   end
 
   # POST /evaluations

@@ -41,6 +41,10 @@
         <li><a href="/users/sign_up"> Agregar nuevo usuario</a></li>
 
         <%end%>
+        <%if current_user.user?%>
+        <li><a class='user-evaluations-nav' href="/user_evaluations"> Ver mis evaluaciones</a></li>
+
+        <%end%>
 
       </ul>
       <form class="navbar-form navbar-left">

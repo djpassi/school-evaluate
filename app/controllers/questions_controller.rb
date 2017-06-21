@@ -10,11 +10,13 @@ class QuestionsController < ApplicationController
     authorize Question
     #@questions = Question.all
     @questions_category = [Question.where(category: 0), Question.where(category: 1), Question.where(category: 2)]
+    p @questions_category
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+    
   end
 
   # GET /questions/new
@@ -32,6 +34,8 @@ class QuestionsController < ApplicationController
   def create
     authorize Question
     @question = Question.new(question_params)
+    @question.genre = "score"
+
     @question.genre = "score"
 
     respond_to do |format|

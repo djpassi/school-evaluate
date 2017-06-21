@@ -1,13 +1,14 @@
 <div class="home">
 	<% if current_user.vip?%>
-	<a class="action" href="/evaluate">
-		 <div class="teacher"></div>
-		 <div>Evaluar Un Profesor</div>
-	</a>
 	<a class="action" href="/questions">
 		 <div class="question"></div>
 		 <div>Banco de preguntas</div>
 	</a>
+	<a class="action" href="/evaluate">
+		 <div class="teacher"></div>
+		 <div>Evaluar Un Profesor</div>
+	</a>
+
 	<a class="action" href="/survey_schemas">
 		<div class="form"></div>
 		<div>Pautas de Evaluación</div>
@@ -23,5 +24,11 @@
 	</a>
 
 	<%end%>
+
+
+	<div class="projects-index">
+	  <%= render partial: '/users/user', :object =>{:users => User.where(role:'user').shuffle.last(7)} %>
+	</div>
+
 
 </div>
