@@ -26,9 +26,12 @@ class EvaluationsController < ApplicationController
   def show_stadistics
     @evaluation = Evaluation.find(params[:id])
     @scores = @evaluation.get_score
+    puts("ACAAAAAAA ESTOYYY")
+    @category_score=@evaluation.get_category_score
     p 'hola'
     p @scores
     @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
+    @survey_name = SurveySchema.find(@evaluation.survey_schema_id).title
     # @same_evaluations = @evaluation.get_same_evaluations
     # @prueba1 = @same_evaluations[1].answers[0].name
     # puts("ACA VIENE LA HORA DE LA VERDAD")

@@ -1,3 +1,4 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <%@name = User.find_by(id:@evaluation.user_id).name%>
 
 <div class="page-header">
@@ -6,6 +7,11 @@
   </div>
 </div>
 <div class="show_stadistics">
+  <h3>Pauta: <%= @survey_name %> </h3>
+  <%= line_chart [
+                   {name: "Promedio", data: @barraline[0]},
+                   {name: @name, data: @barraline[1]}
+               ], xtitle: "Habilidades", ytitle: "Resultado",max: 6 %>
   <div class="charts">
     <dl class="skills-diagram">
       <div class="title">
@@ -20,6 +26,27 @@
       <dt class="skill-<%=Integer(@scores[3])*2 %>">Responsabilidad </dt>
       <dd><%=@scores[3]*2 %></dd>
     </dl>
+
+    <div class="bean-skills">
+      <div class="title">
+        <p>Resultados del profesor por categoria</p>
+      </div>
+      <ul class="bean-skillset">
+          <li class="skill-bar" style="width:<%=(@category_score[0]*100)/5 %>%; background-color:#F3C128">
+            <span>Introducción</span>
+            <span class="skill-percent"><%=(@category_score[0]*100)/5 %></span>
+          </li>
+          <li class="skill-bar" style="width:<%=(@category_score[1]*100)/5 %>%; background-color:#FF5353">
+            <span>Desarrollo</span>
+            <span class="skill-percent"><%=(@category_score[1]*100)/5 %>%</span>
+          </li>
+          <li class="skill-bar" style="width:<%=(@category_score[2]*100)/5 %>%; background-color:#1CDCFF">
+            <span>Conclusión</span>
+            <span class="skill-percent"><%=(@category_score[2]*100)/5 %>%</span>
+          </li>
+      </ul>
+    </div>
+
 
     <div class="bean-skills">
       <div class="title">
@@ -46,9 +73,10 @@
     </div>
 
   </div>
-  <div class="line">
+<!--  <div class="line">
     <%= image_tag @barraline%>
   </div>
+-->
 
 
 
@@ -145,6 +173,8 @@ li.skill-bar {
     max-width: 35em;
     margin: 2em auto 2em;
   }
+
+
   .skills-diagram .title{
     text-align: center;
     font-size: 18px;
