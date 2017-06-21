@@ -1,4 +1,5 @@
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<%= javascript_include_tag "https://www.google.com/jsapi" %>
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
 <%@name = User.find_by(id:@evaluation.user_id).name%>
 
 <div class="page-header">
@@ -11,21 +12,10 @@
   <%= line_chart [
                    {name: "Promedio", data: @barraline[0]},
                    {name: @name, data: @barraline[1]}
-               ], xtitle: "Habilidades", ytitle: "Resultado",max: 6 %>
+               ], xtitle: "Habilidades", ytitle: "Resultado",max: 6,
+               library: {backgroundColor: "transparent"} %>
   <div class="charts">
-    <dl class="skills-diagram">
-      <div class="title">
-        <p>Resultados del profesor por habilidad</p>
-      </div>
-      <dt class="skill-<%=Integer(@scores[0])*2 %>">Autoridad </dt>
-      <dd><%=@scores[0]*2 %></dd>
-      <dt class="skill-<%=Integer(@scores[1])*2%>">comunicacion </dt>
-      <dd><%=@scores[1]*2%></dd>
-      <dt class="skill-<%=Integer(@scores[2])*2 %>">Liderazgo</dt>
-      <dd><%=@scores[2]*2 %></dd>
-      <dt class="skill-<%=Integer(@scores[3])*2 %>">Responsabilidad </dt>
-      <dd><%=@scores[3]*2 %></dd>
-    </dl>
+
 
     <div class="bean-skills">
       <div class="title">
