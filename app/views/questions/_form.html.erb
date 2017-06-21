@@ -40,8 +40,11 @@
             <div class="radioOption">
               <input required id="skill_<%=item%>" name="question[skill]" type="radio" value=<%=item%> />
               <label for="skill"><%=item%></label>
+
             </div>
+
             <% end %>
+            <input type="hidden" name="question[genre]" value="score"/>
           </div>
         </div>
 

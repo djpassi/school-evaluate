@@ -25,7 +25,16 @@ class EvaluationsController < ApplicationController
     p 'hola'
     p @scores
     @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
-    p @question_category
+
+ 
+    @barraline = Evaluation.last.get_google_chart_line
+    
+
+  end
+  def chart_example
+    @barra = Evaluation.last.get_google_chart
+    @barraline = Evaluation.last.get_google_chart_line
+
   end
 
   # GET /evaluations
