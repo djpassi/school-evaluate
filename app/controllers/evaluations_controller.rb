@@ -52,7 +52,6 @@ class EvaluationsController < ApplicationController
 
   def index_evaluations
     authorize Evaluation
-    p "JKSBDJAKSNDKJASNDJKASD"
     p params[:sort]
 
     if params[:sort] == "Profesor"
@@ -78,6 +77,34 @@ class EvaluationsController < ApplicationController
     else
       @evaluations = Evaluation.all
     end
+  end
+
+
+  def user_evaluations
+      evaluations = Evaluation.where(user_id:current_user.id)
+      if params[:sort] == "Profesor"
+        @evaluations = evaluations.sort {
+          |first, second|
+          boolean_value = first.user.name.downcase <=> second.user.name.downcase
+          boolean_value  
+        }
+      elsif params[:sort] == "Fecha"
+        @evaluations =  evaluations.sort{|x| x.created_at}
+      elsif params[:sort] == "Ciclo"
+        @evaluations = evaluations.sort {
+          |first, second|
+          boolean_value = first.survey_schema.cycle <=> second.survey_schema.cycle
+          boolean_value
+        }
+      elsif params[:sort] == "Pauta"
+        @evaluations = evaluations.sort {
+          |first, second|
+          boolean_value = first.survey_schema.title.downcase <=> second.survey_schema.title.downcase
+          boolean_value
+        }
+      else
+        @evaluations = evaluations
+      end
   end
 
   # GET /evaluations/1
