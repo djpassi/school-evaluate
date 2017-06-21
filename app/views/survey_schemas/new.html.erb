@@ -29,7 +29,6 @@
       <tr class="primary">
         <th class="panel-title">#</th>
         <th>Título</th>
-        <th>Tipo de pregunta</th>
         <th>Habilidad</th>
         <th>Agregar pregunta</th>
       </tr>
@@ -41,11 +40,6 @@
             <% contador +=1 %>
             <td> <%= contador %></td>
             <td><%= question.name%></td>
-            <%if question.genre == "text" %>
-              <td><input type="text" disabled class="scaleWrap"> </td>
-            <%else%>
-              <td><%= render 'questions/likert_scale_clean' %></td>
-            <% end %>
             <td> <%= question.skill %></td>
             <td> <%= check_box_tag "questions[]", question.id %>  </td>
           </tr>

@@ -1,5 +1,5 @@
 <div class="index">
-<%= form_for @evaluation do |f| %>
+<%= form_for @evaluation, url: {action: "update"} do |f| %>
   <header>
     <h2 class="evaluation-header"> Editar evaluación del profesor <%= User.find_by(id: @evaluation.user).name %></h2>
   </header>
@@ -29,7 +29,7 @@
           <td> <%=q.name %> </td>
           <td> <%=q.skill %> </td>
           <td > <%= q.text %>  </td>
-          <td> <%= render 'likert_scale_clean' %></td>
+          <td> <%= render 'questions/likert_scale', :q => q  %></td>
         </tr>
         <%end%>
       <%end%>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 	get "show_evaluation/:id", to:'evaluations#show_evaluation', as: 'show_evaluation'
   get "show_stadistics/:id", to:'evaluations#show_stadistics', as: 'show_stadistics'
 	get "index_evaluations", to:'evaluations#index_evaluations', as: 'index_evaluations'
+  get "index_survey_schemas", to:'survey_schemas#index', as: 'index_survey_schemas'
   get "user_evaluations", to:'evaluations#user_evaluations', as: 'user_evaluations'
 
   put 'users/:id/change_role' => "users#change_role", as: 'change_role'
