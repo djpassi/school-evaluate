@@ -20,7 +20,7 @@ class HomeController < ApplicationController
         averages << evaluation.get_score
       end
       final_scores = get_final_average(averages)
-      @final_skills = {'Liderazgo':final_scores[0], 'Comunicacion':final_scores[1] ,'Responsabilidad':final_scores[2],'Autoridad':final_scores[3]}.sort_by { |skill, score| score }.reverse!
+      @final_skills = {'Buen ambiente':final_scores[0], 'Enseñanza':final_scores[1] ,'Preparación':final_scores[2],'Responsabilidad':final_scores[3]}.sort_by { |skill, score| score }.reverse!
       end
 
 		end
@@ -28,7 +28,7 @@ class HomeController < ApplicationController
 
 	end
 	def change_rol
-		if current_user.admin? || current_user.vip? 
+		if current_user.admin? || current_user.vip?
 			@users = User.all
 		else
 			redirect_to index_path

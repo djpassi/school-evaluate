@@ -4,12 +4,29 @@ class Evaluation < ApplicationRecord
   belongs_to :survey_schema
   @title = ""
 
+
+  def get_best_skills
+    scores = get_best_score
+    puts(scores)
+    @sort = scores.sort_by { |x| x[0] }
+    puts(@sort)
+    return [@sort[0],@sort[1]]
+
+  end
   def get_score
     @buen_ambiente = get_average("Buen ambiente")
     @enseñanza = get_average("Enseñanza")
     @preparacion= get_average("Preparación")
     @responsabilidad = get_average("Responsabilidad")
     @respuesta = [@buen_ambiente,@enseñanza,@preparacion,@responsabilidad]
+    return @respuesta
+  end
+  def get_best_score
+    @buen_ambiente = get_average("Buen ambiente")
+    @enseñanza = get_average("Enseñanza")
+    @preparacion= get_average("Preparación")
+    @responsabilidad = get_average("Responsabilidad")
+    @respuesta = [[@buen_ambiente,"Buen ambiente"],[@enseñanza,"Enseñanza"],[@preparacion,"Preparación"],[@responsabilidad,"Responsabilidad"]]
     return @respuesta
   end
 

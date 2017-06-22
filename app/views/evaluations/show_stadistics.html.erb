@@ -1,17 +1,18 @@
 <%= javascript_include_tag "https://www.google.com/jsapi" %>
 <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
-<%@name = User.find_by(id:@evaluation.user_id).name%>
+<%@user  = User.find_by(id:@evaluation.user_id)%>
 
 <div class="page-header">
   <div class="header">
-    <h1> Resultados de <%=@name%> </h1>
+    <h1> Resultados de <%=@user.name%> </h1>
   </div>
 </div>
+
 <div class="show_stadistics">
   <h3>Pauta: <%= @survey_name %> </h3>
   <%= line_chart [
                    {name: "Promedio", data: @barraline[0]},
-                   {name: @name, data: @barraline[1]}
+                   {name: @user.name, data: @barraline[1]}
                ], xtitle: "Habilidades", ytitle: "Resultado",max: 6,
                library: {backgroundColor: "transparent"} %>
   <div class="charts">

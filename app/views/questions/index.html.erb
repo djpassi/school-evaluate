@@ -14,8 +14,8 @@
       <tr class="primary">
         <th class="panel-title">#</th>
         <th>Título</th>
-        <th>Tipo de pregunta</th>
         <th>Habilidad</th>
+
         <th>Editar</th>
         <th>Eliminar</th>
       </tr>
@@ -27,11 +27,6 @@
             <% contador +=1 %>
             <td> <%= contador %></td>
             <td><%= question.name%></td>
-            <%if question.genre == "text" %>
-              <td><input type="text" disabled class="scaleWrap"> </td>
-            <%else%>
-              <td><%= render 'likert_scale_clean' %></td>
-            <% end %>
             <td> <%= question.skill %></td>
             <td><%= link_to 'Editar', edit_question_path(question) %> </td>
             <td> <%= link_to 'Eliminar', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
