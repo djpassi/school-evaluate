@@ -24,8 +24,11 @@ Rails.application.routes.draw do
 
   get "chart_example", to:'evaluations#chart_example', as: 'chart_example'
 
+  get 'users/search', to: 'users#search'
   get "users/:id", to:'users#show', as: 'users_show'
   get "users/", to:'users#index', as: 'users_index'
+
+  
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

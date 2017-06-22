@@ -7,11 +7,14 @@ class UsersController < ApplicationController
     flash[:notice]= "Rol cambiado"
   end
 
+  def search
+      @users = User.search(params[:search])
+  end
 
-
-  def index;
+  def index
       @users = User.where(role:'user')
   end
+
   def show;
       @user = User.find(params[:id])
       evaluations = Evaluation.where(user_id: params[:id])
@@ -27,7 +30,6 @@ class UsersController < ApplicationController
       @final_skills = {'Liderazgo':final_scores[0], 'Comunicacion':final_scores[1] ,'Responsabilidad':final_scores[2],'Autoridad':final_scores[3]}.sort_by { |skill, score| score }.reverse!
       end
   end
-
 
   private
   def set_user
