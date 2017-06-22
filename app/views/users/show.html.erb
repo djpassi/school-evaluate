@@ -26,10 +26,19 @@
             <div class="panel-footer">
               <h3 style="text-align:center">Fortalezas</h3>
               <% if @final_skills%>
-
               <div class="profile-badges">
-              <img class="badgee" src="/images/preparación.png">
-              <img class="badgee" src="/images/ambiente.png">
+                <% if (@final_skills[0][0].to_s == "Enseñanza") or (@final_skills[1][0].to_s == "Enseñanza") %>
+                  <img class="badgee" src="/images/enseñanza.png">
+                <%end%>
+                <% if (@final_skills[0][0].to_s == "Preparación") or (@final_skills[1][0].to_s == "Preparación") %>
+                  <img class="badgee" src="/images/preparación.png">
+                <%end%>
+                <% if (@final_skills[0][0].to_s == "Buen ambiente") or (@final_skills[1][0].to_s == "Buen ambiente") %>
+                  <img class="badgee" src="/images/ambiente.png">
+                <%end%>
+                <% if (@final_skills[0][0].to_s == "Responsabilidad") or (@final_skills[1][0].to_s == "Responsabilidad")%>
+                  <img class="badgee" src="/images/responsabilidad.png">
+                <%end%>
               </div>
 
 

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'users/change_role'
 
-	devise_for :users
+	devise_for :users, :controllers => { :registrations => "users/registrations" }
 	devise_scope :user do
 	  root to: "devise/sessions#new"
 	end
