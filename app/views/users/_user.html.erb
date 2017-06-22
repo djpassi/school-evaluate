@@ -8,13 +8,48 @@
     <img class='img-circle img-responsive' src="<%= user.image %>" >
   <% end %>
 <h5 id="project-name"> <%= user.name %></h5>
-<% if (user.skill1 or user.skill2)%>
-	<div class="small-badge">
-		<img src="/images/preparación.png">
-	</div>
-	<div class="badge-left">
-		<img src="/images/responsabilidad.png">
-	</div>
+<% if (user.skill1? or user.skill2?)%>
+	<% if (user.skill1.to_s == "Enseñanza") %>
+	  <div class="small-badge">
+	  <img class="small-badge" src="/images/enseñanza.png">
+	  </div>
+	<%end%>
+	<% if (user.skill1.to_s == "Preparación")%>
+	  <div class="small-badge">
+	  <img class="small-badge" src="/images/preparación.png">
+	  </div>
+	<%end%>
+	<% if (user.skill1.to_s == "Buen ambiente")%>
+	  <div class="small-badge">
+	  <img class="small-badge" src="/images/ambiente.png">
+	  </div>
+	<%end%>
+	<% if (user.skill1.to_s == "Responsabilidad")%>
+	  <div class="small-badge">
+	  <img class="small-badge" src="/images/responsabilidad.png">
+	  </div>
+	<%end%>
+	<% if (user.skill2.to_s == "Enseñanza") %>
+	  <div class="small-badge">
+	  <img class="badge-left" src="/images/enseñanza.png">
+	  </div>
+	<%end%>
+	<% if (user.skill2.to_s == "Preparación")%>
+	  <div class="small-badge">
+	  <img class="badge-left" src="/images/preparación.png">
+	  </div>
+	<%end%>
+	<% if (user.skill2.to_s == "Buen ambiente")%>
+	  <div class="small-badge">
+	  <img class="badge-left" src="/images/ambiente.png">
+	  </div>
+	<%end%>
+	<% if (user.skill2.to_s == "Responsabilidad")%>
+	  <div class="small-badge">
+	  <img class="badge-left" src="/images/responsabilidad.png">
+	  </div>
+	<%end%>
+
 <%end%>
 </a>
 <% end %>
