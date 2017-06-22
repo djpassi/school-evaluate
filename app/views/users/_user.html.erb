@@ -8,7 +8,14 @@
     <img class='img-circle img-responsive' src="<%= user.image %>" >
   <% end %>
 <h5 id="project-name"> <%= user.name %></h5>
-
+<% if (user.skill1 or user.skill2)%>
+	<div class="small-badge">
+		<img src="/images/preparación.png">
+	</div>
+	<div class="badge-left">
+		<img src="/images/responsabilidad.png">
+	</div>
+<%end%>
 </a>
 <% end %>
 </div>

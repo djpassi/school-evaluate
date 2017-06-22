@@ -133,6 +133,24 @@
 }
 
 
+.small-badge {
+	bottom: 0rem;
+	width: 45%;
+	z-index: 10000;
+	position: absolute;
+	left: 1rem;
+
+}
+
+.badge-left {
+	bottom: 0rem;
+	width: 45%;
+	z-index: 10000;
+	position: absolute;
+	right: 1rem;
+}
+
+
  .contact-button{
    position: relative;
    float: right;
@@ -153,8 +171,7 @@
    margin: 1rem;
    position: relative;
    width: 145px;
-   height: 165px;
-   overflow: scroll;
+   height: 170px;
    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
  }
 
@@ -165,7 +182,7 @@
  .project-square img{
      display: inline-block;
      width: 65%;
-     height: 65%;
+     height: 55%;
      margin: auto;
      margin-top: 5px;
    }
