@@ -7,9 +7,11 @@ class UsersController < ApplicationController
     flash[:notice]= "Rol cambiado"
   end
 
+  def search
+      @users = User.search(params[:search])
+  end
 
-
-  def index;
+  def index
       @users = User.where(role:'user')
   end
 
@@ -29,7 +31,6 @@ class UsersController < ApplicationController
       end
 
   end
-
 
   private
   def set_user
