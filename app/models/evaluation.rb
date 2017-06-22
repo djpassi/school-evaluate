@@ -5,11 +5,11 @@ class Evaluation < ApplicationRecord
   @title = ""
 
   def get_score
-    @liderazgo = get_average("Liderazgo")
-    @comunicacion = get_average("Comunicación")
-    @responsabilidad= get_average("Responsabilidad")
-    @autoridad = get_average("Autoridad")
-    @respuesta = [@autoridad,@comunicacion,@liderazgo,@responsabilidad]
+    @buen_ambiente = get_average("Buen ambiente")
+    @enseñanza = get_average("Enseñanza")
+    @preparacion= get_average("Preparación")
+    @responsabilidad = get_average("Responsabilidad")
+    @respuesta = [@buen_ambiente,@enseñanza,@preparacion,@responsabilidad]
     return @respuesta
   end
 
@@ -93,7 +93,7 @@ class Evaluation < ApplicationRecord
     :axis_with_labels => [['x'], ['y']],
     :max_value => 5,
     :min_value =>0,
-    :axis_labels => [["A|C|L|R"]],
+    :axis_labels => [["B|E|L|R"]],
     )
     return @barra
   end
@@ -124,7 +124,7 @@ class Evaluation < ApplicationRecord
     @scores = []
     @final_names = []
 
-    @categorias = ["Autoridad","Comunicación","Liderazgo","Responsabilidad"]
+    @categorias = ["Buen ambiente","Enseñanza","Preparación","Responsabilidad"]
     @same_evaluations.each do |evaluation|
       @score = evaluation.get_score
       @name = User.find_by(id:evaluation.user_id).name

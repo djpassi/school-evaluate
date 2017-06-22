@@ -37,23 +37,22 @@ u9 = User.create(name:'admin',email:'admin@uc.cl',password:'123456',password_con
 
 
 #Pautas
-p1 = SurveySchema.create(title:'Pauta Educacion Basica',cycle:'1')
-p2 = SurveySchema.create(title:'Pauta Educacion Media',cycle:'2')
+
 
 #Preguntas
 q1 = Question.create(name:'La planificacion esta organizada en torno a una vision.',
-	genre:'score', category: 0, skill: 'Liderazgo')
+	genre:'score', category: 0, skill: 'Preparación')
 q2 = Question.create(name:'Presenta objetivos que apuntan al desarrollo de aprendizajes en torno a un  tema.',
-	genre:'score', category: 0, skill: 'Comunicación')
+	genre:'score', category: 0, skill: 'Enseñanza')
 q3 = Question.create(name:'La planificación expresa preguntas, relaciones o conceptos que son claves para la comprensión del tema.',
 	genre:'score', category: 0, skill: 'Responsabilidad')
 q4 = Question.create(name:'Presenta objetivos que apuntan al desarrollo de habilidades académicas.',
-	genre:'score', category: 1, skill: 'Autoridad')
+	genre:'score', category: 1, skill: 'Enseñanza')
 q5 = Question.create(name:'Presenta objetivos que apuntan al desarrollo de habilidades socioemocionales.',
-	genre:'score', category: 1, skill: 'Responsabilidad')
+	genre:'score', category: 1, skill: 'Buen ambiente')
 q6 = Question.create(name:'Tiene una fundamentación que contextualiza los objetivos de aprendizaje con la Visión.',
-	genre:'score', category: 2, skill: 'Liderazgo')
+	genre:'score', category: 2, skill: 'Enseñanza')
 q7 = Question.create(name:'La secuencia de acciones está orientada al logro de los aprendizajes propuestos.',
-	genre:'score', category: 2, skill: 'Comunicación')
+	genre:'score', category: 2, skill: 'Preparación')
 q8 = Question.create(name:'Comentarios extras',
 	genre:'text', category: 2, skill: 'General')

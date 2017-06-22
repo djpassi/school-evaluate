@@ -24,8 +24,9 @@ class UsersController < ApplicationController
         averages << evaluation.get_score
       end
       final_scores = get_final_average(averages)
-      @final_skills = {'Liderazgo':final_scores[0], 'Comunicacion':final_scores[1] ,'Responsabilidad':final_scores[2],'Autoridad':final_scores[3]}.sort_by { |skill, score| score }.reverse!
+      @final_skills = {'Buen ambiente':final_scores[0], 'Enseñanza':final_scores[1] ,'Preparación':final_scores[2],'Responsabilidad':final_scores[3]}.sort_by { |skill, score| score }.reverse!
       end
+
   end
 
 
@@ -38,19 +39,21 @@ class UsersController < ApplicationController
   end
 
   def get_final_average(scores)
-    liderazgo = 0
-    comunicacion = 0
-    responsabilidad= 0
-    autoridad = 0
+    buen_ambiente = 0
+    enseñanza = 0
+    preparacion= 0
+    responsabilidad = 0
     scores.each do |score|
-      liderazgo += score[0]
-      comunicacion += score[1]
-      responsabilidad += score[2]
-      autoridad += score[3]
+      buen_ambiente += score[0]
+      enseñanza += score[1]
+      preparacion += score[2]
+      responsabilidad += score[3]
     end
     quantity = scores.count
-    return [liderazgo/quantity, comunicacion/quantity, responsabilidad/quantity,
-            autoridad/quantity]
+    return [buen_ambiente/quantity, enseñanza/quantity, preparacion/quantity,
+            responsabilidad/quantity]
+
   end
+
 
 end

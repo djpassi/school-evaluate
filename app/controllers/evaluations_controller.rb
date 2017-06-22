@@ -91,7 +91,7 @@ class EvaluationsController < ApplicationController
         @evaluations = evaluations.sort {
           |first, second|
           boolean_value = first.user.name.downcase <=> second.user.name.downcase
-          boolean_value  
+          boolean_value
         }
       elsif params[:sort] == "Fecha"
         @evaluations =  evaluations.sort{|x| x.created_at}
@@ -127,7 +127,7 @@ class EvaluationsController < ApplicationController
     @user_id = params[:user_id]
     @text = @survey.questions.where(name: "Comentarios extras")
 
-    
+
     @question_category = [@survey.questions.where(category: 0), @survey.questions.where(category: 1), @survey.questions.where(category: 2)]
 
   end
@@ -168,7 +168,7 @@ class EvaluationsController < ApplicationController
 
     p "WENAAAA"
     p params
-    
+
     respond_to do |format|
       if @evaluation.update(evaluation_params)
         format.html { redirect_to show_evaluation_path(@evaluation.id), notice: 'Evaluation was successfully updated.' }
@@ -198,7 +198,7 @@ class EvaluationsController < ApplicationController
     def set_categories
       #@categories = ['INICIO', 'DESARROLLO', 'CIERRE']
       @categories = {0 => 'INICIO', 1 => 'DESARROLLO', 2 => 'CIERRE'}
-      @skills = ['Liderazgo', 'Comunicación', 'Responsabilidad', 'Autoridad']
+      @skills = ['Buen ambiente', 'Enseñanza','Preparación', 'Responsabilidad']
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

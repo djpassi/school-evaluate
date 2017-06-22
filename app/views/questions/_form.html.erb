@@ -38,7 +38,7 @@
           <div class="type_title"> Seleccione habilidad relacionada a pregunta: </div>
             <% for item in @skills %>
             <div class="radioOption">
-              <input required id="skill_<%=item%>" name="question[skill]" type="radio" value=<%=item%> />
+              <input required id="skill_<%=item%>" name="question[skill]" type="radio" value="<%=item%>" />
               <label for="skill"><%=item%></label>
 
             </div>
