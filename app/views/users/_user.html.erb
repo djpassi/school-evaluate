@@ -1,3 +1,5 @@
+
+<div class="other-users">
 <% user[:users].each do |user| %>
 <a href="/users/<%=user.id%>" class="project-square">
   <%if not user.image? %>
@@ -9,3 +11,4 @@
 
 </a>
 <% end %>
+</div>
