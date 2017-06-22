@@ -28,7 +28,7 @@ class HomeController < ApplicationController
 
 	end
 	def change_rol
-		if current_user.admin? || current_user.vip? 
+		if current_user.admin? || current_user.vip?
 			@users = User.all
 		else
 			redirect_to index_path

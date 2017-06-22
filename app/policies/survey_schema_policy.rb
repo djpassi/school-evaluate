@@ -7,24 +7,24 @@ class SurveySchemaPolicy
 
     end
   def index?
-    @current_user.vip?
+    @current_user.UTP?
   end
   def new?
-    @current_user.vip?
+    @current_user.UTP?
   end
   def edit?
-    @current_user.vip?
+    @current_user.UTP?
   end
   def show?
-    current_user.vip?
+    current_user.UTP?
   end
   def create?
-    @current_user.vip?
+    @current_user.UTP?
   end
   def update?
-    @current_user.vip?
+    @current_user.UTP?
   end
   def destroy?
-    @current_user.vip?
+    @current_user.UTP?
   end
 end

@@ -7,11 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Usuarios
+
 u1 = User.create(name:'Diego Passi',email:'djpassi@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/diego.jpg', cycle: "Primer ciclo")
 u2 = User.create(name:'David Galemiri',email:'dagalemiri@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/david.jpg', cycle: "Primer ciclo")
 u3 = User.create(name:'Juan Marquez',email:'jgmarquez@uc.cl',password:'123456',password_confirmation:'123456',image:'/images/nacho.jpg', cycle: "Segundo ciclo")
 u4 = User.create(name:'Felipe De La Fuente',email:'fadelafuente1@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/felipe.jpg', cycle: "Segundo ciclo")
-u5 = User.create(name:'Director',email:'director@uc.cl',password:'123456',password_confirmation:'123456',role: :vip, cycle: "Segundo ciclo")
+u5 = User.create(name:'Director',email:'director@uc.cl',password:'123456',password_confirmation:'123456',role: :UTP, cycle: "Segundo ciclo")
 u6 = User.create(name:'Jefe UTP',email:'utp@uc.cl',password:'123456',password_confirmation:'123456', cycle: "Segundo ciclo")
 u7 = User.create(name:'Bastian Abarca',email:'bastian@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/bastian.png', cycle: "Tercer ciclo")
 u8 = User.create(name:'Freddy Rieloff',email:'freddy@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/freddy.jpg', cycle: "Tercer ciclo")
@@ -24,6 +25,7 @@ u14 = User.create(name:'Jorge Astorga',email:'jorge@uc.cl',password:'123456',pas
 u15 = User.create(name:'Mar Perez',email:'mperez@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/mar_perez.jpg', cycle: "Segundo ciclo")
 u16 = User.create(name:'Maria Flores',email:'mflores@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/maria_flores.jpg', cycle: "Primer ciclo")
 u17 = User.create(name:'Valeria Acevedo',email:'valeria@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/valeria.jpg', cycle: "Primer ciclo")
+
 
 
 

@@ -3,7 +3,7 @@ class SurveySchema < ApplicationRecord
   has_many :questions, through: :contains
 
   before_destroy :destroy_contains
-
+  
   private
 
   def destroy_contains
