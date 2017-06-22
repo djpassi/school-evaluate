@@ -15,7 +15,7 @@ class SurveySchemasController < ApplicationController
       @survey_schemas = SurveySchema.all.sort {
         |first, second|
         boolean_value = first.title.downcase <=> second.title.downcase
-        boolean_value  
+        boolean_value
       }
     elsif params[:sort] == "Ciclo"
       @survey_schemas = SurveySchema.all.sort {
@@ -27,7 +27,7 @@ class SurveySchemasController < ApplicationController
       @survey_schemas = SurveySchema.all
     end
 
-    
+
   end
 
   # GET /survey_schemas/1
@@ -131,7 +131,7 @@ class SurveySchemasController < ApplicationController
     def set_categories
       #@categories = ['INICIO', 'DESARROLLO', 'CIERRE']
       @categories = {0 => 'INICIO', 1 => 'DESARROLLO', 2 => 'CIERRE'}
-      @skills = ['Liderazgo', 'Comunicación', 'Responsabilidad', 'Autoridad']
+      @skills = ['Buen ambiente', 'Enseñanza','Preparación', 'Responsabilidad']
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

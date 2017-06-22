@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    
+
   end
 
   # GET /questions/new
@@ -84,7 +84,7 @@ class QuestionsController < ApplicationController
     def set_categories
       #@categories = ['INICIO', 'DESARROLLO', 'CIERRE']
       @categories = {0 => 'INICIO', 1 => 'DESARROLLO', 2 => 'CIERRE'}
-      @skills = ['Liderazgo', 'Comunicación', 'Responsabilidad', 'Autoridad']
+      @skills = ["Buen ambiente", 'Enseñanza','Preparación', 'Responsabilidad']
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
