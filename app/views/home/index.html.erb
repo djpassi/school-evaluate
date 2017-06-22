@@ -1,4 +1,4 @@
-<div class="home">
+
 	<% if current_user.vip?%>
 	<a class="action" href="/questions">
 		 <div class="question"></div>
@@ -24,14 +24,55 @@
 	</a>
 
 	<%else %>
+	<div class="profile-banner">
+		<div class="img-container">
+		    <%if not current_user.image? %>
+		       <img class='img-circle img-responsive' src="/images/placeholder-user.png" >
+		    <% else %>
+		      <img class='img-circle img-responsive' src="<%= current_user.image %>" >
+		    <% end %>
+		</div>
+		<div class="data">
+			<div class="name">
+				<%= current_user.name %>
+			</div>
+			<div class="cicle">
+				Segundo ciclo
+			</div>
+			<div class="profile-skills">
+			    <% if @final_skills%>
+			    	<% if @final_skills[0][0] == "Enseñaza" or @final_skills[1][0] == "Enseñaza" %>
+			    		<img class="badgee" src="/images/enseñanza.png">
+			    	<%end%>
+			    	<% if @final_skills[0][0] == "Preparación" or @final_skills[1][0] == "Preparación" %>
+			    		<img class="badgee" src="/images/preparación.png">
+			    	<%end%>
+			    	<% if @final_skills[0][0] == "Buen ambiente" or @final_skills[1][0] == "Buen ambiente" %>
+			    		<img class="badgee" src="/images/ambiente.png">
+			    	<%end%>
+			    	<% if @final_skills[0][0] == "Responsabilidad" or @final_skills[1][0] == "Responsabilidad" %>
+			    		<img class="badgee" src="/images/responsabilidad.png">
+			    	<%end%>
+
+			    	<img class="badgee" src="/images/preparación.png">
+			    	<img class="badgee" src="/images/ambiente.png">
+			    	<img class="badgee" src="/images/enseñanza.png">
+			    	<img class="badgee" src="/images/responsabilidad.png">
+                <%else%>
+                 	<div class="noevaluation">No se presentan evaluaciones actualmente para el profesor.</div>
+
+                <%end%>
+            </div>
+		</div>
+		<div class="action-buttons">
+			<div class="blank-space"></div>
+			<a href="/users" class="link-button">Profesores</a>
+			<a href="/user_evaluations" class="link-button"> Ver mis evaluaciones</a>
+		</div>
+	</div>
 	<div class="projects-index">
 	  <%= render partial: '/users/user', :object =>{:users => User.where(role:'user').shuffle.last(7)} %>
 	</div>
 
 	<%end%>
 
-
-
-
-
-</div>
