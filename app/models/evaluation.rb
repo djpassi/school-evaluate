@@ -10,7 +10,7 @@ class Evaluation < ApplicationRecord
     puts(scores)
     @sort = scores.sort_by { |x| x[0] }
     puts(@sort)
-    return [@sort[0],@sort[1]]
+    return [@sort[3],@sort[2]]
 
   end
   def get_score

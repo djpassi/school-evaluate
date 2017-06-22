@@ -162,11 +162,8 @@ class EvaluationsController < ApplicationController
     evaluation.answers << answers_array
     @scores = evaluation.get_best_skills
     @user = User.find_by(id:evaluation.user_id)
-    puts("revisar aacccaaa")
-    puts(@scores[0][1])
-    puts(@scores[1][1])
-    @user.update(skill1:@scores[0][3])
-    @user.update(skill2:@scores[1][2])
+    @user.update(skill1: @scores[0][1])
+    @user.update(skill2: @scores[1][1])
     redirect_to show_evaluation_path(evaluation.id), notice: 'Evaluation was successfully created.'
 
   end
