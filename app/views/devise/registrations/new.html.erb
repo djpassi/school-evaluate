@@ -8,6 +8,8 @@
     <%= f.text_field :name, class: "inputField", autofocus: true, placeholder: "Nombre" %>
     <%= f.email_field :email, class: "inputField", placeholder: "Correo electrónico" %>
 
+    <%= f.select :cycle, options_for_select(["Primer ciclo","Segundo ciclo","Tercer ciclo"]) %>
+
     <%= f.password_field :password, class: "inputField", autocomplete: "off", placeholder: "Contraseña" %>
     <%= f.password_field :password_confirmation, class: "inputField", autocomplete: "off", placeholder: "Repetir contraseña" %>
     <% if @minimum_password_length %>

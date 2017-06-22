@@ -10,4 +10,13 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :user
   end
+
+  def self.search(search)
+      if search
+        return User.where('name LIKE ?', "%#{search}%")
+      else
+        return User.all
+      end
+  end
+
 end
