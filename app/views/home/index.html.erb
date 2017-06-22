@@ -37,27 +37,23 @@
 				<%= current_user.name %>
 			</div>
 			<div class="cicle">
-				Segundo ciclo
+				<%= current_user.cycle %>
 			</div>
 			<div class="profile-skills">
 			    <% if @final_skills%>
-			    	<% if @final_skills[0][0] == "Enseñaza" or @final_skills[1][0] == "Enseñaza" %>
-			    		<img class="badgee" src="/images/enseñanza.png">
-			    	<%end%>
-			    	<% if @final_skills[0][0] == "Preparación" or @final_skills[1][0] == "Preparación" %>
-			    		<img class="badgee" src="/images/preparación.png">
-			    	<%end%>
-			    	<% if @final_skills[0][0] == "Buen ambiente" or @final_skills[1][0] == "Buen ambiente" %>
-			    		<img class="badgee" src="/images/ambiente.png">
-			    	<%end%>
-			    	<% if @final_skills[0][0] == "Responsabilidad" or @final_skills[1][0] == "Responsabilidad" %>
-			    		<img class="badgee" src="/images/responsabilidad.png">
-			    	<%end%>
 
-			    	<img class="badgee" src="/images/preparación.png">
-			    	<img class="badgee" src="/images/ambiente.png">
-			    	<img class="badgee" src="/images/enseñanza.png">
-			    	<img class="badgee" src="/images/responsabilidad.png">
+	                <% if (@final_skills[0][0].to_s == "Enseñanza") or (@final_skills[1][0].to_s == "Enseñanza") %>
+	                  <img class="badgee" src="/images/enseñanza.png">
+	                <%end%>
+	                <% if (@final_skills[0][0].to_s == "Preparación") or (@final_skills[1][0].to_s == "Preparación") %>
+	                  <img class="badgee" src="/images/preparación.png">
+	                <%end%>
+	                <% if (@final_skills[0][0].to_s == "Buen ambiente") or (@final_skills[1][0].to_s == "Buen ambiente") %>
+	                  <img class="badgee" src="/images/ambiente.png">
+	                <%end%>
+	                <% if (@final_skills[0][0].to_s == "Responsabilidad") or (@final_skills[1][0].to_s == "Responsabilidad")%>
+	                  <img class="badgee" src="/images/responsabilidad.png">
+	                <%end%>
                 <%else%>
                  	<div class="noevaluation">No se presentan evaluaciones actualmente para el profesor.</div>
 
