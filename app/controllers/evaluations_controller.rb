@@ -21,23 +21,13 @@ class EvaluationsController < ApplicationController
     @scores = @evaluation.get_score
     @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
     @text = @evaluation.answers.where(name: "Comentarios extras")
-    #@score = @evaluation.get_score
   end
   def show_stadistics
     @evaluation = Evaluation.find(params[:id])
     @scores = @evaluation.get_score
-    puts("ACAAAAAAA ESTOYYY")
     @category_score=@evaluation.get_category_score
-    p 'hola'
-    p @scores
     @question_category = [@evaluation.answers.where(category: 0), @evaluation.answers.where(category: 1), @evaluation.answers.where(category: 2)]
     @survey_name = SurveySchema.find(@evaluation.survey_schema_id).title
-    # @same_evaluations = @evaluation.get_same_evaluations
-    # @prueba1 = @same_evaluations[1].answers[0].name
-    # puts("ACA VIENE LA HORA DE LA VERDAD")
-    # puts(@prueba1)
-
-
     @barraline = @evaluation.get_google_chart_line
 
 
@@ -171,10 +161,6 @@ class EvaluationsController < ApplicationController
   # PATCH/PUT /evaluations/1
   # PATCH/PUT /evaluations/1.json
   def update
-
-    p "WENAAAA"
-    p params
-
     respond_to do |format|
       if @evaluation.update(evaluation_params)
         format.html { redirect_to show_evaluation_path(@evaluation.id), notice: 'Evaluation was successfully updated.' }

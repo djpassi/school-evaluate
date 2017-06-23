@@ -8,9 +8,6 @@ class SurveySchemasController < ApplicationController
   # GET /survey_schemas.json
   def index
     authorize SurveySchema
-
-    p params[:sort]
-
     if params[:sort] == "Titulo"
       @survey_schemas = SurveySchema.all.sort {
         |first, second|
@@ -64,20 +61,12 @@ class SurveySchemasController < ApplicationController
   # POST /survey_schemas.json
   def create
     authorize SurveySchema
-    p survey_schema_params
-
     @survey_schema = SurveySchema.new(survey_schema_params)
     @survey_schema.cycle = params[:cycle]
     @questions = Question.where(id: params[:questions])
     @texto = Question.where(name: "Comentarios extras")
-    puts(@texto)
-    puts(@texto.name)
     @survey_schema.questions << @questions
     @survey_schema.questions << @texto
-
-
-    p @survey_schema.questions
-
     respond_to do |format|
       if @survey_schema.save
         format.html { redirect_to @survey_schema, notice: 'Survey schema was successfully created.' }
