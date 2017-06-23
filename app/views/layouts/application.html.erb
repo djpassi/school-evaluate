@@ -40,14 +40,6 @@
         <li><a href="/questions">Banco de preguntas</a></li>
         <li><a href="/survey_schemas">Pautas de Evaluación</a></li>
         <li><a href="/index_evaluations">Evaluaciones recientes</a></li>
-        <li>
-          <%= form_tag '/users/search', :method => 'get' do %>
-           <p class="search-align">
-               <%= text_field_tag :search, nil,placeholder:'Buscar',class: 'input_search_for'%>
-               <%= submit_tag "Buscar" , class:'search_go'%>
-           </p>
-          <% end %>
-        </li>
         <%elsif current_user.admin?%>
         <li><a href="/users/sign_up"> Agregar nuevo usuario</a></li>
 
