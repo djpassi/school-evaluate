@@ -1,6 +1,65 @@
-<h1>Editing Evaluation</h1>
+<div class="index">
+<%= form_for @evaluation, url: {action: "update"} do |f| %>
+  <header>
+    <h2 class="evaluation-header"> Editar evaluación del profesor <%= User.find_by(id: @evaluation.user).name %></h2>
+  </header>
+  <table class="table table-striped table-hover">
+    <% contador = 0%>
+    <% for i in 0..2%>
 
-<%= render 'form', evaluation: @evaluation %>
+    <thead class="categoryTitle <%="cat#{i}"%>">
+      <td colspan="6"><%=@categories[i]%></td>
+    </thead>
+    <thead>
+      <tr class="primary">
+        <th class="panel-title">#</th>
+        <th>Pregunta</th>
+        <th>Habilidad</th>
+        <th>Respuesta</th>
+        <th> Likert </th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <%  @question_category[i].each do |q| %>
+      <%if q.name != "Comentarios extras"%>
+        <tr class="primary">
+          <% contador +=1 %>
+          <td> <%= contador%></td>
+          <td> <%=q.name %> </td>
+          <td> <%=q.skill %> </td>
+          <td > <%= q.text %>  </td>
+          <td> <%= render 'questions/likert_scale', :q => q  %></td>
+        </tr>
+        <%end%>
+      <%end%>
+    </tbody>
+    <%end%>
+  </table>
 
-<%= link_to 'Show', @evaluation %> |
-<%= link_to 'Back', evaluations_path %>
+  <table class="table table-striped table-hover ">
+    <thead class="categoryTitle cat3">
+      <td colspan="1">COMENTARIOS</td>
+    </thead>
+    <thead>
+      <tr colspan="1" class="primary">
+        <th colspan="1" class="panel-title"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr colspan="1">
+        <!-- <td colspan="1"><input type="text" name="answers[<%=@text[0].id%>]"  /> </td> -->
+        <td><%= f.text_area :text, value:@text[0].text%></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= f.submit "Editar" %>
+  <% end %>
+
+  <div class="text-center">
+    <a href="/evaluate" class="btn btn-primary btn-lg">Regresar</a>
+    <a href="/show_stadistics/<%=@evaluation.id%>" class="btn btn-primary btn-lg">Estadisticas</a>
+  </div>
+</div>
+
+

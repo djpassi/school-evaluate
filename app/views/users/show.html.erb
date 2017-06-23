@@ -1,0 +1,55 @@
+<div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @user.name %></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic"  src= <%= if @user.image then @user.image else '/images/placeholder-user.png' end %> class="img-circle img-responsive"> </div>
+
+                <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Email</td>
+                        <td><a href="mailto:<%= @user.email%>"><%= @user.email %></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h3><a href="mailto:<%= @user.email%>"><span class="label label-danger contact-button">Enviar email</span></a></h3>
+
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer">
+              <h3 style="text-align:center">Fortalezas</h3>
+              <% if @final_skills%>
+              <div class="profile-badges">
+                <% if (@final_skills[0][0].to_s == "Enseñanza") or (@final_skills[1][0].to_s == "Enseñanza") %>
+                  <img class="badgee" src="/images/enseñanza.png">
+                <%end%>
+                <% if (@final_skills[0][0].to_s == "Preparación") or (@final_skills[1][0].to_s == "Preparación") %>
+                  <img class="badgee" src="/images/preparación.png">
+                <%end%>
+                <% if (@final_skills[0][0].to_s == "Buen ambiente") or (@final_skills[1][0].to_s == "Buen ambiente") %>
+                  <img class="badgee" src="/images/ambiente.png">
+                <%end%>
+                <% if (@final_skills[0][0].to_s == "Responsabilidad") or (@final_skills[1][0].to_s == "Responsabilidad")%>
+                  <img class="badgee" src="/images/responsabilidad.png">
+                <%end%>
+              </div>
+
+
+
+             <%else%>
+             <h4>No se presentan evaluaciones actualmente para el profesor.</h4>
+
+              <%end%>
+
+             </div>
+
+        </div>
+      </div>
+    </div>

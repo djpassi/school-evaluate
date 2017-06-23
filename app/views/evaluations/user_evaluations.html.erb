@@ -1,0 +1,42 @@
+
+<div class="page-header">
+  <div class="header">
+    <h1> Evaluaciones recientes de <%= current_user.name%> </h1>
+  </div>
+</div>
+
+<div class="index">
+<br>
+<br>
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr class="primary">
+        <th class="panel-title">#</th>
+        <th><%= link_to "Pauta", index_evaluations_path(sort:"Pauta") %></th>
+        <th><%= link_to "Fecha de evaluación", index_evaluations_path(sort:"Fecha") %></th>
+        <th><%= link_to "Ciclo", index_evaluations_path(sort:"Ciclo") %></th>
+        <th>Estadisticas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contador = 0%>
+      <% @evaluations.each do |evaluation|%>
+      <tr>
+        <% contador +=1 %>
+        <td> <%= contador %></td>
+        <td><%= SurveySchema.find(evaluation.survey_schema_id).title %></td>
+        <td><%= evaluation.created_at.hour %>:<%= evaluation.created_at.min%>  <%= evaluation.created_at.day %>/<%= evaluation.created_at.month %>/<%= evaluation.created_at.year%> </td>
+        <% ciclo = SurveySchema.find(evaluation.survey_schema_id).cycle%>
+        <% if ciclo == '1' %>
+          <td> Primero </td>
+        <% elsif ciclo == '2' %>
+          <td> Segundo </td>
+        <% else %>
+          <td> Tercero </td>
+        <%end%>
+        <td> <%= link_to "Mostrar estadisticas", show_stadistics_path(evaluation.id)%> </td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

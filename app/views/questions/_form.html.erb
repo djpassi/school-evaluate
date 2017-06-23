@@ -21,12 +21,36 @@
         </div>
       <% end %>
 
-        <%= f.input :name, :label => "Nombre", as: :text, required: true%>
-        <%= f.input_field :genre, as: :radio_buttons, :collection => [["text", 'Texto'], ["score", 'Puntuación (1 a 5)']], :label_method => :last,
-          :value_method => :first, input_html: { class: "form-control", required: true }%>
+        <%= f.input :name, :label => "Escriba la pregunta a continuación:", as: :text, required: true%>
+        <div class="radios">
+          <div class="selectWrapper">
+            <div class="type_title"> Seleccione categoría de la pregunta: </div>
+            <div class="radioWrapper">
+              <% for item in @categories %>
+                <div class="radioOption">
+                <input required id="category_<%=item[0]%>" name="question[category]" type="radio" value=<%=item[0]%> />
+                <label for="category"><%=@categories[item[0]]%></label>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="selectWrapper">
+          <div class="type_title"> Seleccione habilidad relacionada a pregunta: </div>
+            <% for item in @skills %>
+            <div class="radioOption">
+              <input required id="skill_<%=item%>" name="question[skill]" type="radio" value="<%=item%>" />
+              <label for="skill"><%=item%></label>
+
+            </div>
+
+            <% end %>
+            <input type="hidden" name="question[genre]" value="score"/>
+          </div>
+        </div>
+
           <br>
         <div class="btn-group btn-group-justified">
-          <p><a href="/questions" class="btn btn-primary btn-sm">Cancelar</a>
+          <p><a href="/questions" class="btn btn-primary btn-sm">Regresar</a>
             <%= f.button :submit, 'Guardar'%>
           </p>
         </div>

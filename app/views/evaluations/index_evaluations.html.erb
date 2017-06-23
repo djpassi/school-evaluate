@@ -12,9 +12,12 @@
     <thead>
       <tr class="primary">
         <th class="panel-title">#</th>
-        <th>Profesor</th>
-        <th>Fecha de evaluación</th>
+        <th><%= link_to "Profesor", index_evaluations_path(sort:"Profesor") %></th>
+        <th><%= link_to "Pauta", index_evaluations_path(sort:"Pauta") %></th>
+        <th><%= link_to "Fecha de evaluación", index_evaluations_path(sort:"Fecha") %></th>
+        <th><%= link_to "Ciclo", index_evaluations_path(sort:"Ciclo") %></th>
         <th>Ver</th>
+        <th>Estadisticas</th>
       </tr>
     </thead>
     <tbody>
@@ -24,8 +27,19 @@
         <% contador +=1 %>
         <td> <%= contador %></td>
         <td><%= User.find_by(id:evaluation.user_id).name %></td>
-        <td><%= evaluation.created_at %></td>
-        <td> <%= link_to "Mostrar respuestas", show_evaluation_path(evaluation.evaluation_number)%> </td>
+        <td><%= SurveySchema.find(evaluation.survey_schema_id).title %></td>
+        <td><%= evaluation.created_at.hour %>:<%= evaluation.created_at.min%>  <%= evaluation.created_at.day %>/<%= evaluation.created_at.month %>/<%= evaluation.created_at.year%> </td>
+        <% ciclo = SurveySchema.find_by(id:evaluation.survey_schema_id).cycle%>
+        <% if ciclo == '1' %>
+          <td> Primero </td>
+        <% elsif ciclo == '2' %>
+          <td> Segundo </td>
+        <% else %>
+          <td> Tercero </td>
+        <%end%>
+        <td> <%= link_to "Mostrar respuestas", show_evaluation_path(evaluation.id)%> </td>
+      
+        <td> <%= link_to "Mostrar estadisticas", show_stadistics_path(evaluation.id)%> </td>
       </tr>
       <%end%>
     </tbody>

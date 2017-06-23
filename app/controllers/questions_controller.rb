@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:index, :new, :edit, :update]
   before_action :confirm_logged_in
 
 
@@ -7,12 +8,15 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     authorize Question
-    @questions = Question.all
+    #@questions = Question.all
+    @questions_category = [Question.where(category: 0), Question.where(category: 1), Question.where(category: 2)]
+    p @questions_category
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+
   end
 
   # GET /questions/new
@@ -30,6 +34,9 @@ class QuestionsController < ApplicationController
   def create
     authorize Question
     @question = Question.new(question_params)
+    @question.genre = "score"
+
+    @question.genre = "score"
 
     respond_to do |format|
       if @question.save
@@ -74,8 +81,14 @@ class QuestionsController < ApplicationController
       @question = Question.find(params[:id])
     end
 
+    def set_categories
+      #@categories = ['INICIO', 'DESARROLLO', 'CIERRE']
+      @categories = {0 => 'INICIO', 1 => 'DESARROLLO', 2 => 'CIERRE'}
+      @skills = ["Buen ambiente", 'Enseñanza','Preparación', 'Responsabilidad']
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:name, :genre)
+      params.require(:question).permit(:name, :category, :skill)
     end
 end

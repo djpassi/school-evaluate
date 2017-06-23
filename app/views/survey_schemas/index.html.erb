@@ -12,8 +12,8 @@
           <thead>
             <tr class="primary">
               <th class="panel-title"></th>
-
-              <th>Título</th>
+              <th><%= link_to "Titulo", index_survey_schemas_path(sort:"Titulo") %></th>
+              <th><%= link_to "Ciclo", index_survey_schemas_path(sort:"Ciclo") %></th>
               <th>Editar</th>
               <th>Eliminar</th>
             </tr>
@@ -25,7 +25,13 @@
               <% contador +=1 %>
               <td> <%= contador %></td>
               <td><%= link_to survey_schema.title, survey_schema %></td>
-
+              <% if survey_schema.cycle == '1' %>
+                <td> Primero </td>
+              <% elsif survey_schema.cycle == '2' %>
+                <td> Segundo </td>
+              <% else %>
+                <td> Tercero </td>
+              <%end%>
               <td><%= link_to 'Editar', edit_survey_schema_path(survey_schema) %> </td>
               <td> <%= link_to 'Eliminar', survey_schema, method: :delete, data: { confirm: 'Está seguro?' } %></td>
             </tr>

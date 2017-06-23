@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526001925) do
+ActiveRecord::Schema.define(version: 20170622014909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,13 @@ ActiveRecord::Schema.define(version: 20170526001925) do
     t.string   "name"
     t.string   "text"
     t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "genre"
+    t.string   "skill"
+    t.integer  "category"
+    t.integer  "evaluation_id"
+    t.index ["evaluation_id"], name: "index_answers_on_evaluation_id", using: :btree
   end
 
   create_table "contains", force: :cascade do |t|
@@ -50,12 +54,15 @@ ActiveRecord::Schema.define(version: 20170526001925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "genre"
+    t.string   "skill"
+    t.integer  "category"
   end
 
   create_table "survey_schemas", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "cycle"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,10 +80,15 @@ ActiveRecord::Schema.define(version: 20170526001925) do
     t.integer  "role"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "image"
+    t.string   "skill1"
+    t.string   "skill2"
+    t.string   "cycle"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "answers", "evaluations"
   add_foreign_key "contains", "questions"
   add_foreign_key "contains", "survey_schemas"
   add_foreign_key "evaluations", "answers"

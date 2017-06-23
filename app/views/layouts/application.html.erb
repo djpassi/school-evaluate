@@ -1,3 +1,5 @@
+<%= javascript_include_tag "https://www.google.com/jsapi" %>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,13 +32,28 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1  ">
       <ul class="nav navbar-nav">
-        <% if current_user.vip?%>
+        <li><a href="/users">Profesores</a></li>
+
+        <% if current_user.UTP?%>
+
         <li><a href="/evaluate">Evaluar Profesor</a></li>
         <li><a href="/questions">Banco de preguntas</a></li>
         <li><a href="/survey_schemas">Pautas de Evaluación</a></li>
         <li><a href="/index_evaluations">Evaluaciones recientes</a></li>
+        <li>
+          <%= form_tag '/users/search', :method => 'get' do %>
+           <p class="search-align">
+               <%= text_field_tag :search, nil,placeholder:'Buscar',class: 'input_search_for'%>
+               <%= submit_tag "Buscar" , class:'search_go'%>
+           </p>
+          <% end %>
+        </li>
         <%elsif current_user.admin?%>
         <li><a href="/users/sign_up"> Agregar nuevo usuario</a></li>
+
+        <%end%>
+        <%if current_user.user?%>
+        <li><a class='user-evaluations-nav' href="/user_evaluations"> Ver mis evaluaciones</a></li>
 
         <%end%>
 
@@ -48,7 +65,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <%= current_user.name  %><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <%if current_user.admin? || current_user.vip?%>
+            <%if current_user.admin? || current_user.UTP?%>
           <li><%= link_to('<span class="glyphicon glyphicon-ok"></span> Cambiar roles usuarios'.html_safe, home_change_rol_path) %></li>
           <%end%>
           <li><%= link_to('<span class="glyphicon glyphicon-cog"></span> Cambiar contraseña'.html_safe, edit_user_registration_path) %></li>

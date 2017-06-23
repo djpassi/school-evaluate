@@ -7,6 +7,6 @@ class HomePolicy
 
     end
   def index?
-    @current_user.vip?
+    @current_user.UTP?
   end
 end
