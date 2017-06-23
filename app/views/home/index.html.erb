@@ -1,19 +1,22 @@
 
 	<% if current_user.UTP?%>
-	<a class="action" href="/questions">
-		 <div class="question"></div>
-		 <div>Banco de preguntas</div>
-	</a>
-	<a class="action" href="/evaluate">
-		 <div class="teacher"></div>
-		 <div>Evaluar Un Profesor</div>
-	</a>
+	<div class="action-container-index">
+		<a class="action" href="/questions">
+			 <div class="question"></div>
+			 <div>Banco de preguntas</div>
+		</a>
+		<a class="action" href="/evaluate">
+			 <div class="teacher"></div>
+			 <div>Evaluar Un Profesor</div>
+		</a>
 
-	<a class="action" href="/survey_schemas">
-		<div class="form"></div>
-		<div>Pautas de Evaluación</div>
-	</a>
+		<a class="action" href="/survey_schemas">
+			<div class="form"></div>
+			<div>Pautas de Evaluación</div>
+		</a>
+	</div>
 	<%elsif current_user.admin?%>
+	<div class="action-container-index">
 	<a class="action" href="/users/sign_up">
 		 <div class="new_user"></div>
 		 <div>Nuevo usuario</div>
@@ -22,6 +25,7 @@
 		 <div class="change_role"></div>
 		 <div>Cambiar Rol usuario</div>
 	</a>
+	</div>
 
 	<%else %>
 	<div class="profile-banner">

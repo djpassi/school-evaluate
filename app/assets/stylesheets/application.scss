@@ -10,6 +10,18 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  */
+
+.action-container-index {
+	width: 100%;
+	display: flex;
+	padding-left: 10%;
+	padding-right: 10%;
+	text-align: center;
+	margin-top: 20vh;
+	height: 41vh;
+
+}
+
 .other-users {
 	width: 100%;
 }
@@ -360,13 +372,14 @@
 	text-decoration: unset;
 }
 .action {
-	width: 30%;
-	margin: 5%;
-	min-height: 20em;
-	margin-top: 6em;
-	text-align: center;
-	border-radius: 42px;
-	padding-top: 1em;
+	// //width: 30%;
+	// margin: 5%;
+	// min-height: 20em;
+	// //margin-top: 6em;
+	// text-align: center;
+	// border-radius: 42px;
+	// padding-top: 1em;
+	flex: 1;
 
 }
 
@@ -388,28 +401,33 @@
 
 .action .question{
 	background: url("/images/question2.png");
-	background-size: cover;
+	background-repeat: no-repeat;
 	height: 100%;
+	width: 100%;
+	background-position: center;
+
 }
 
 .action .form{
 	background: url("/images/folder.png");
-	background-size: cover;
-	width: 80%;
+	background-repeat: no-repeat;
 	height: 100%;
+	width: 100%;
+	background-position: center;
 }
 .action .new_user{
 	background: url("/images/new-user.png");
-	background-size: cover;
-	height: 100%;
-	margin-left: 10%;
+	background-repeat: no-repeat;
+	height: 110%;
+	width: 100%;
+	background-position: center;
 }
 .action .change_role{
 	background: url("/images/switch-user.png");
-	background-size: cover;
-	width: 80%;
-	height: 100%;
-	margin-left: 10%;
+	background-repeat: no-repeat;
+	height: 110%;
+	width: 100%;
+	background-position: center;
 }
 
 .index {
