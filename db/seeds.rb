@@ -8,25 +8,25 @@
 
 #Usuarios
 arreglo = ['Preparación', 'Buen ambiente', 'Enseñanza', 'Responsabilidad']
-u1 = User.create(name:'Diego Passi',email:'djpassi@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/diego.jpg', cycle: "Primer ciclo", skill1:arreglo[0], skill2:arreglo[1])
-u2 = User.create(name:'David Galemiri',email:'dagalemiri@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/david.jpg', cycle: "Primer ciclo", skill1:arreglo[2], skill2:arreglo[3])
-u3 = User.create(name:'Juan Marquez',email:'jgmarquez@uc.cl',password:'123456',password_confirmation:'123456',image:'/images/nacho.jpg', cycle: "Segundo ciclo", skill1:arreglo[2], skill2:arreglo[0])
-u4 = User.create(name:'Felipe De La Fuente',email:'fadelafuente1@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/felipe.jpg', cycle: "Segundo ciclo", skill1:arreglo[1], skill2:arreglo[3])
-u5 = User.create(name:'Director',email:'director@uc.cl',password:'123456',password_confirmation:'123456',role: :UTP, cycle: "Segundo ciclo", skill1:arreglo[0], skill2:arreglo[3])
-u6 = User.create(name:'Jefe UTP',email:'utp@uc.cl',password:'123456',password_confirmation:'123456', cycle: "Segundo ciclo", skill1:arreglo[1], skill2:arreglo[2])
-u7 = User.create(name:'Bastian Abarca',email:'bastian@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/bastian.png', cycle: "Tercer ciclo", skill1:arreglo[1], skill2:arreglo[3])
-u8 = User.create(name:'Freddy Rieloff',email:'freddy@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/freddy.jpg', cycle: "Tercer ciclo", skill1:arreglo[0], skill2:arreglo[2])
-u9 = User.create(name:'Agnes Ibanez',email:'agnes@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/agnes_ibanez.jpg', cycle: "Tercer ciclo", skill1:arreglo[0], skill2:arreglo[1])
-u10 = User.create(name:'Ana Bravo',email:'amb@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/amb.jpg', cycle: "Tercer ciclo", skill1:arreglo[0], skill2:arreglo[3])
-u11 = User.create(name:'Benedicto Gonzalez',email:'benedicto@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/benedicto.jpg', cycle: "Tercer ciclo", skill1:arreglo[1], skill2:arreglo[3])
-u12 = User.create(name:'Francisco Villaroes',email:'fvillaroel@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/francisco_villaroel.jpg', cycle: "Tercer ciclo", skill1:arreglo[0], skill2:arreglo[1])
-u13 = User.create(name:'Angela Cataldo',email:'ange@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/inge.jpg', cycle: "Tercer ciclo", skill1:arreglo[2], skill2:arreglo[3])
-u14 = User.create(name:'Jorge Astorga',email:'jorge@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/jorge_astorga.jpg', cycle: "Primer ciclo", skill1:arreglo[1], skill2:arreglo[3])
-u15 = User.create(name:'Mar Perez',email:'mperez@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/mar_perez.jpg', cycle: "Segundo ciclo", skill1:arreglo[2], skill2:arreglo[3])
-u16 = User.create(name:'Maria Flores',email:'mflores@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/maria_flores.jpg', cycle: "Primer ciclo", skill1:arreglo[0], skill2:arreglo[1])
-u17 = User.create(name:'Valeria Acevedo',email:'valeria@uc.cl',password:'123456',password_confirmation:'123456', image:'/images/valeria.jpg', cycle: "Primer ciclo", skill1:arreglo[1], skill2:arreglo[2])
+u1 = User.create(name:'Diego Passi',email:'djpassi@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/diego.jpg', cycle: "Primer ciclo", skill1:arreglo[0], skill2:arreglo[1])
+u2 = User.create(name:'David Galemiri',email:'dagalemiri@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/david.jpg', cycle: "Primer ciclo", skill1:arreglo[2], skill2:arreglo[3])
+u3 = User.create(name:'Juan Marquez',email:'jgmarquez@uc.cl',password:'123123',password_confirmation:'123123',image:'/images/nacho.jpg', cycle: "Segundo ciclo", skill1:arreglo[2], skill2:arreglo[0])
+u4 = User.create(name:'Felipe De La Fuente',email:'fadelafuente1@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/felipe.jpg', cycle: "Segundo ciclo", skill1:arreglo[1], skill2:arreglo[3])
+u5 = User.create(name:'Director',email:'director@uc.cl',password:'123123',password_confirmation:'123123',role: :UTP, cycle: "Segundo ciclo", skill1:arreglo[0], skill2:arreglo[3])
+u6 = User.create(name:'Jefe UTP',email:'utp@uc.cl',password:'123123',password_confirmation:'123123', cycle: "Segundo ciclo", skill1:arreglo[1], skill2:arreglo[2])
+u7 = User.create(name:'Bastian Abarca',email:'bastian@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/bastian.png', cycle: "Tercer ciclo", skill1:arreglo[1], skill2:arreglo[3])
+u8 = User.create(name:'Freddy Rieloff',email:'freddy@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/freddy.jpg', cycle: "Tercer ciclo", skill1:arreglo[0], skill2:arreglo[2])
+u9 = User.create(name:'Agnes Ibanez',email:'agnes@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/agnes_ibanez.jpg', cycle: "Tercer ciclo", skill1:arreglo[0], skill2:arreglo[1])
+u10 = User.create(name:'Ana Bravo',email:'amb@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/amb.jpg', cycle: "Tercer ciclo", skill1:arreglo[0], skill2:arreglo[3])
+u11 = User.create(name:'Benedicto Gonzalez',email:'benedicto@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/benedicto.jpg', cycle: "Tercer ciclo", skill1:arreglo[1], skill2:arreglo[3])
+u12 = User.create(name:'Francisco Villaroes',email:'fvillaroel@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/francisco_villaroel.jpg', cycle: "Tercer ciclo", skill1:arreglo[0], skill2:arreglo[1])
+u13 = User.create(name:'Angela Cataldo',email:'ange@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/inge.jpg', cycle: "Tercer ciclo", skill1:arreglo[2], skill2:arreglo[3])
+u14 = User.create(name:'Jorge Astorga',email:'jorge@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/jorge_astorga.jpg', cycle: "Primer ciclo", skill1:arreglo[1], skill2:arreglo[3])
+u15 = User.create(name:'Mar Perez',email:'mperez@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/mar_perez.jpg', cycle: "Segundo ciclo", skill1:arreglo[2], skill2:arreglo[3])
+u16 = User.create(name:'Maria Flores',email:'mflores@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/maria_flores.jpg', cycle: "Primer ciclo", skill1:arreglo[0], skill2:arreglo[1])
+u17 = User.create(name:'Valeria Acevedo',email:'valeria@uc.cl',password:'123123',password_confirmation:'123123', image:'/images/valeria.jpg', cycle: "Primer ciclo", skill1:arreglo[1], skill2:arreglo[2])
 
-u18 = User.create(name:'admin',email:'admin@uc.cl',password:'123456',password_confirmation:'123456',role: :admin)
+u18 = User.create(name:'admin',email:'admin@uc.cl',password:'123123',password_confirmation:'123123',role: :admin)
 
 
 #NO BORRAR, ES NECESARIA PARA EL MODELO Comentarios extras .
